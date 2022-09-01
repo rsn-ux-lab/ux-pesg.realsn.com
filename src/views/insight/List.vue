@@ -1,5 +1,5 @@
 <template>
-  <div>list</div>
+  <div>API 호출</div>
 </template>
 
 <script>
@@ -15,7 +15,6 @@ export default {
       .catch(function (_error) {
         console.log(_error);
       });
-
     // $.ajax({
     //   url: "https://esgdevel.realsn.com/esgSystem/contact/inquiry/getIndustryCode",
     //   method: "get",

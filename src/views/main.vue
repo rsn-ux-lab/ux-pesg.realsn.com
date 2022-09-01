@@ -1,18 +1,7 @@
 <template>
-  <main id="container" role="main">
-    container
-    <list />
-  </main>
+  <main id="container" role="main">container</main>
 </template>
 
-<script>
-import List from "./List.vue";
-
-export default {
-  components: {
-    List,
-  },
-};
-</script>
+<script></script>
 
 <style scoped lang="scss"></style>
