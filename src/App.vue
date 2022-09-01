@@ -1,22 +1,21 @@
 <template>
-  <div id="app">    
-    <ListDashBoard />    
-  </div>
+   <div id="wrap" data-target-device="pc">
+        <Header/>
+        <router-view/>
+        <Footer/>
+    </div>
 </template>
 
 <script>
-import ListDashBoard from './views/ListDashBoard.vue'
+import Header from "@/components/layout/Header.vue";
+import Footer from "@/components/layout/Footer.vue";
 
 export default {
-  name: 'App',
-  components: {
-    ListDashBoard,     
-  },
-  mounted: function(){
-  
-
-    
-  }
+    name: 'wrap',
+    components: {
+        Header,
+        Footer,
+    },
 }
 </script>
 

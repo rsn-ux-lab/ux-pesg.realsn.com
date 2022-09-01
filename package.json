@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve  --oepn --port 51002",
-    "build": "vue-cli-service build --no-clean  --watch",
+    "build": "vue-cli-service build --no-clean",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "core-js": "^3.8.3",    
+    "core-js": "^3.8.3",
     "jquery": "^3.6.0",
     "vue": "^2.6.14",
-    "vue-plugin-load-script": "^2.1.1"
+    "vue-plugin-load-script": "^2.1.1",
+    "vue-router": "^3.4.8"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
