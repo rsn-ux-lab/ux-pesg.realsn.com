@@ -62,6 +62,6 @@
 | LIST   | URL                          |
 | ------ | ---------------------------- |
 | 기획안 | 없음                         |
-| 디자인 | https://tinyurl.com/2cwb37p4 |
+| 디자인 | https://tinyurl.com/2lbyd6ga |
 | API    | https://tinyurl.com/2qrgab2z |
 | QA     | 미정                         |
