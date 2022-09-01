@@ -1,13 +1,22 @@
 /* fonts */
-// import "./assets/fonts/NotoSansKR/NotoSansKR.css"; // NotoSansKR
+import "./assets/fonts/NotoSansKR/NotoSansKR.css"; // NotoSansKR
 import "./assets/fonts/Jost/Jost.css"; // NotoSansKR
-
-/* scss */
-// import "./assets/scss/import.scss";
 
 /* Lib */
 import $ from "jquery";
 window.$ = $;
+
+/* utils */
+import "./assets/js/utils/utils";
+
+/* plugins */
+import "./assets/js/plugins/plugins";
+
+/* components */
+import "./assets/js/components/forms";
+// import "./components/layer";
+
+/* Vue */
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -19,3 +28,6 @@ new Vue({
   router,
   render: (h) => h(App),
 }).$mount("#wrap");
+
+/* pages */
+import "./assets/js/pages/common";

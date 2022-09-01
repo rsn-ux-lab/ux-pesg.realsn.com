@@ -1,5 +1,7 @@
 <template>
-  <main id="container" role="main">container</main>
+  <main id="container" role="main">
+    <h1>HOME</h1>
+  </main>
 </template>
 
 <script></script>

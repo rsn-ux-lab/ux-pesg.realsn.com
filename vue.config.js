@@ -9,7 +9,9 @@ module.exports = {
   },
   devServer: {
     overlay: false,
+    proxy: "https://esgdevel.realsn.com",
   },
+  lintOnSave: false,
   css: {
     sourceMap: true,
     loaderOptions: {

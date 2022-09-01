@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-loding-spinner="true">
     <h1>insight</h1>
     <List />
   </div>

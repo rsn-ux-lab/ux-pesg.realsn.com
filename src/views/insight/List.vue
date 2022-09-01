@@ -1,5 +1,5 @@
 <template>
-  <div>API 호출</div>
+  <div class="data">API 호출</div>
 </template>
 
 <script>
@@ -8,24 +8,15 @@ import axios from "axios";
 export default {
   mounted() {
     axios
-      .get("https://esgdevel.realsn.com/esgSystem/contact/inquiry/getIndustryCode")
+      .get("/esgSystem/contact/inquiry/getIndustryCode")
       .then(function (_response) {
-        console.log(_response);
+        _response.data.industryCode.forEach((_each) => {
+          $(".data").append(`<p>${_each.code_name}</p>`);
+        });
       })
       .catch(function (_error) {
         console.log(_error);
       });
-    // $.ajax({
-    //   url: "https://esgdevel.realsn.com/esgSystem/contact/inquiry/getIndustryCode",
-    //   method: "get",
-    //   dataType: "json",
-    //   async: false,
-    //   timeout: 100000,
-    //   cache: false,
-    //   success: function (_result) {
-    //     console.log(_result);
-    //   },
-    // });
   },
 };
 </script>

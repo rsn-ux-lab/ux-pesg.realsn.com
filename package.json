@@ -23,6 +23,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "expose-loader": "^1.0.1",
+    "multi-clamp": "^2.0.2",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.2.0",
     "vue-template-compiler": "^2.6.11"
@@ -39,7 +40,14 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "globals": {
+      "$": true,
+      "jQuery": true
+    },
+    "rules": {
+      "no-unused-vars": "off",
+      "no-undef": "off"
+    }
   },
   "browserslist": [
     "> 1%",
