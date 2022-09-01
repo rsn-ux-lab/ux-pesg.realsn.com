@@ -1,0 +1,9 @@
+/* SCSS Document */
+@charset "UTF-8";
+
+/* Utils */
+@import
+   "./utils/variables", // SASS 변수
+   "./utils/functions", // SASS 함수
+   "./utils/mixins", // SASS 믹스인
+   "./utils/utilities"; // 유틸리티(css framework)

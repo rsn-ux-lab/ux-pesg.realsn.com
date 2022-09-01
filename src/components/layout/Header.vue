@@ -1,33 +1,30 @@
 <template>
-    <header id="header" class="header" role="banner">
-    header
-    </header>
+  <header id="header" class="header" role="banner">
+    <div class="inner">
+      <h1 class="header__logo">
+        <a href="#">
+          <img src="" alt="P-ESG" />
+        </a>
+      </h1>
+    </div>
+  </header>
 </template>
 
-
-<style lang="scss">
-    
-</style>
-
-
+<style lang="scss"></style>
 
 <script>
-import $ from 'jquery'
-
 export default {
-    mounted() {
-        $(function(){ // DOCUMENT READY...
-        /*
+  mounted() {
+    $(function () {
+      // DOCUMENT READY...
+      /*
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-        */(function(){
-
-
-
-        })();/*
+        */ (function () {
+        //
+      })(); /*
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-        */});// DOCUMENT READY...
-    }
-}
+        */
+    }); // DOCUMENT READY...
+  },
+};
 </script>
-
-

@@ -8,13 +8,25 @@ import axios from "axios";
 export default {
   mounted() {
     axios
-      .get("http://esgdevel.realsn.com/esgSystem/contact/inquiry/getIndustryCode")
-      .then(function (response) {
-        console.log(response);
+      .get("https://esgdevel.realsn.com/esgSystem/contact/inquiry/getIndustryCode")
+      .then(function (_response) {
+        console.log(_response);
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (_error) {
+        console.log(_error);
       });
+
+    // $.ajax({
+    //   url: "https://esgdevel.realsn.com/esgSystem/contact/inquiry/getIndustryCode",
+    //   method: "get",
+    //   dataType: "json",
+    //   async: false,
+    //   timeout: 100000,
+    //   cache: false,
+    //   success: function (_result) {
+    //     console.log(_result);
+    //   },
+    // });
   },
 };
 </script>
