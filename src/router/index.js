@@ -1,21 +1,21 @@
 /* Router */
-import Vue          from 'vue';
-import Router       from 'vue-router';
+import Vue from "vue";
+import Router from "vue-router";
 
 //MAIN
-import main             from '@/views/main';
+import Main from "@/views/Main";
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
-  mode: 'history',
-  routes: [    
+  mode: "history",
+  routes: [
     {
-      path: '/',
-      name: main,
-      component: main
+      path: "/",
+      name: Main,
+      component: Main,
     },
-  ]
-})
+  ],
+});
 
-export default router
+export default router;

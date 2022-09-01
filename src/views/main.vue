@@ -1,21 +1,18 @@
-<template>    
-    <div>container</div>
+<template>
+  <main id="container" role="main">
+    container
+    <list />
+  </main>
 </template>
 
-
-
 <script>
-    export default {
-        data(){
-            return {
-            imgPath: '/img/main/'
-            }
-        }
-    }
+import List from "./List.vue";
+
+export default {
+  components: {
+    List,
+  },
+};
 </script>
 
-
-
-<style scoped lang="scss">
-    
-</style>
+<style scoped lang="scss"></style>
