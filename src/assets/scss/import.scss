@@ -1,14 +1,15 @@
 /* SCSS Document */
 @charset "UTF-8";
 
+
 /* Utils */
 @import
-   "./utils/variables", // SASS 변수
-   "./utils/functions", // SASS 함수
-   "./utils/mixins", // SASS 믹스인
-   "./utils/utilities"; // 유틸리티(css framework)  
+   "@/assets/scss/utils/variables", // SASS 변수
+   "@/assets/scss/utils/functions", // SASS 함수
+   "@/assets/scss/utils/mixins", // SASS 믹스인
+   "@/assets/scss/utils/utilities"; // 유틸리티(css framework)  
 
 /* layout */
 @import
-   "./layout/reset", // CSS 초기화
-  "./layout/frame"; // 기본구조정의
+   "@/assets/scss/layout/reset", // CSS 초기화   
+   "@/assets/scss/layout/_frame.scss"; // 기본구조정의

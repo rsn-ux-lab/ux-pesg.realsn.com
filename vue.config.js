@@ -1,14 +1,24 @@
-const { defineConfig } = require('@vue/cli-service')
-const path = require('path');
+const path = require("path");
 
-module.exports = defineConfig({
-  transpileDependencies: true,
-  outputDir: path.resolve(__dirname, './docs'),
-  devServer: {
-    client: {
-      overlay: false
-    }
+module.exports = {
+  chainWebpack: (config) => {
+    config.plugin("html").tap((args) => {
+      args[0].title = "P.ESG 회사소개";
+      return args;
+    });
   },
-  lintOnSave: false
-})
-
+  devServer: {
+    overlay: false,
+  },
+  css: {
+    sourceMap: true,
+    loaderOptions: {
+      sass: {
+        additionalData: `
+            @import "@/assets/scss/import.scss";
+            `,
+      },
+    },
+  },
+  outputDir: path.resolve(__dirname, "./docs"),
+};

@@ -1,31 +1,31 @@
 {
-  "name": "ux-pesg.realsn.com",
+  "name": "2022_pesg_etc_VUE",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve  --oepn --port 51002",
+    "serve": "vue-cli-service serve --oepn --port 51003",
     "build": "vue-cli-service build --no-clean",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "core-js": "^3.8.3",
-    "jquery": "^3.6.0",
-    "vue": "^2.6.14",
-    "vue-plugin-load-script": "^2.1.1",
+    "core-js": "^3.6.5",
+    "jquery": "^3.5.1",
+    "vue": "^2.6.11",
+    "vue-plugin-load-script": "^1.3.2",
     "vue-router": "^3.4.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
-    "node-sass": "^7.0.1",
-    "sass-loader": "^10.0.5",
-    "vue-template-compiler": "^2.6.14"
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "expose-loader": "^1.0.1",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^10.2.0",
+    "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
     "root": true,
@@ -37,16 +37,9 @@
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "@babel/eslint-parser"
+      "parser": "babel-eslint"
     },
-    "globals": {
-      "$": true,
-      "jQuery": true
-    },
-    "rules": {
-      "no-unused-vars": "off",
-      "no-undef": "off"
-    }
+    "rules": {}
   },
   "browserslist": [
     "> 1%",

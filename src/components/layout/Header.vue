@@ -7,7 +7,7 @@
         </a>
       </h1>
       <nav class="header-gnb">
-        <router-link class="header-gnb__link" to="/">index</router-link>
+        <router-link class="header-gnb__link" to="/">Index</router-link>
         <router-link class="header-gnb__link" to="/dashboard">Dashboard</router-link>
         <router-link class="header-gnb__link" to="/insight">Insight</router-link>
         <router-link class="header-gnb__link" to="/contact">Contact</router-link>
@@ -19,9 +19,10 @@
   </header>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .header {
   height: 8.4rem;
+  // background-color: $G-colorPrimary;
   .inner {
     display: flex;
     flex-wrap: nowrap;
@@ -29,34 +30,27 @@
   }
   &-h1 {
     display: inline-flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-basis: 220px;
   }
   &-gnb {
     display: inline-flex;
     flex: 1;
+    &__link {
+      margin-right: 40px;
+      font-family: "Jost";
+      font-size: 1.8rem;
+      &--is-active {
+        color: $G-colorPrimary;
+      }
+    }
   }
   &-utill {
     display: inline-flex;
-    justify-content: end;
+    justify-content: flex-end;
     flex-basis: 240px;
   }
 }
 </style>
 
-<script>
-export default {
-  mounted() {
-    $(function () {
-      // DOCUMENT READY...
-      /*
-        ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-        */ (function () {
-        //
-      })(); /*
-        ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-        */
-    }); // DOCUMENT READY...
-  },
-};
-</script>
+<script></script>
