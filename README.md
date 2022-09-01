@@ -48,7 +48,7 @@
 
 | NAME | Infomation                                       |
 | ---- | ------------------------------------------------ |
-| Node | v16.16.0                                         |
+| Node | v14.17.4                                         |
 | Dev. | Vue2, vue-router, Axios, ESM, jQuery, GSAP, SCSS |
 
 <br>
