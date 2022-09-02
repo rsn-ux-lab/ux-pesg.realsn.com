@@ -19,19 +19,21 @@ export default {
     const $linkGnbs = document.querySelectorAll(".header-gnb__link");
     const links = [...$linkGnbs].map((_el) => _el.getAttribute("href"));
 
-    function addClass() {
-      const path = location.pathname;
-      const idx = links.indexOf(path);
-
-      $linkGnbs[idx].classList.add("is-active");
-    }
-    addClass();
-
     $linkGnbs.forEach((_each) => {
       _each.addEventListener("click", function () {
         addClass();
       });
     });
+
+    function addClass() {
+      const path = location.pathname;
+      const idx = links.indexOf(path);
+
+      if (idx !== -1) {
+        $linkGnbs[idx].classList.add("is-active");
+      }
+    }
+    addClass();
   },
 };
 </script>
