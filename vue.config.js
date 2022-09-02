@@ -8,6 +8,7 @@ module.exports = {
     });
   },
   devServer: {
+    historyApiFallback: true,
     overlay: false,
     proxy: "https://esgdevel.realsn.com",
   },
