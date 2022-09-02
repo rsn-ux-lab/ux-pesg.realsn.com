@@ -23,11 +23,12 @@ import router from "./router";
 
 Vue.config.productionTip = false;
 
-new Vue({
-  el: "#wrap",
-  router,
-  render: (h) => h(App),
-}).$mount("#wrap");
-
+document.addEventListener("DOMContentLoaded", async function (event) {
+  new Vue({
+    el: "#wrap",
+    router,
+    render: (h) => h(App),
+  }).$mount("#wrap");
+});
 /* pages */
 import "./assets/js/pages/common";
