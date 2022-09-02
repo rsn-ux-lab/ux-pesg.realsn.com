@@ -59,9 +59,10 @@
 
 # WorkSheet
 
-| LIST   | URL                          |
-| ------ | ---------------------------- |
-| 기획안 | 없음                         |
-| 디자인 | https://tinyurl.com/2lbyd6ga |
-| API    | https://tinyurl.com/2qrgab2z |
-| QA     | 미정                         |
+| LIST     | URL                          |
+| -------- | ---------------------------- |
+| 기획안   | 없음                         |
+| 디자인   | https://tinyurl.com/2lbyd6ga |
+| 수정사항 | https://tinyurl.com/2k6jfeem |
+| API      | https://tinyurl.com/2qrgab2z |
+| QA       | 미정                         |

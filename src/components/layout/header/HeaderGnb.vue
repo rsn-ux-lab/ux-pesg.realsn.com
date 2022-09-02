@@ -10,12 +10,19 @@
 <script>
 export default {
   mounted() {
+    /**
+     *
+     * GNB Active
+     *
+     */
+
     const $linkGnbs = document.querySelectorAll(".header-gnb__link");
     const links = [...$linkGnbs].map((_el) => _el.getAttribute("href"));
 
     function addClass() {
       const path = location.pathname;
       const idx = links.indexOf(path);
+
       $linkGnbs[idx].classList.add("is-active");
     }
     addClass();
@@ -30,17 +37,15 @@ export default {
 </script>
 
 <style lang="scss">
-.header {
-  &-gnb {
-    display: inline-flex;
-    flex: 1;
-    &__link {
-      margin-right: 40px;
-      font-family: "Jost";
-      font-size: 1.8rem;
-      &.is-active {
-        color: $G-colorPrimary;
-      }
+.header-gnb {
+  display: inline-flex;
+  flex: 1;
+  &__link {
+    margin-right: 40px;
+    font-family: "Jost";
+    font-size: 1.8rem;
+    &.is-active {
+      color: $G-colorPrimary;
     }
   }
 }
