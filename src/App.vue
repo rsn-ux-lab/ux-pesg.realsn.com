@@ -16,6 +16,11 @@ export default {
     Header,
     Footer,
   },
+  data() {
+    return {
+      imgPath: "@/assets/images",
+    };
+  },
 };
 </script>
 

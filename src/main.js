@@ -1,6 +1,7 @@
 /* fonts */
 import "./assets/fonts/NotoSansKR/NotoSansKR.css"; // NotoSansKR
 import "./assets/fonts/Jost/Jost.css"; // NotoSansKR
+import "./assets/scss/import.scss";
 
 /* Lib */
 import $ from "jquery";
@@ -16,6 +17,9 @@ import "./assets/js/plugins/plugins";
 import "./assets/js/components/forms";
 // import "./components/layer";
 
+/* pages */
+import "./assets/js/pages/common";
+
 /* Vue */
 import Vue from "vue";
 import App from "./App.vue";
@@ -30,5 +34,3 @@ document.addEventListener("DOMContentLoaded", async function (event) {
     render: (h) => h(App),
   }).$mount("#wrap");
 });
-/* pages */
-import "./assets/js/pages/common";

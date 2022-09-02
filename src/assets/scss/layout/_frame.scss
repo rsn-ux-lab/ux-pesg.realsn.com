@@ -8,15 +8,24 @@ html,
 body {
   width: 100%;
   height: 100%;
-  font-size: 10px;
+  font-size: 8px;
+  @include xl {
+    font-size: 10px;
+  }
+  @include qhd {
+    // font-size: 11px;
+  }
+  @include uhd {
+    font-size: 22px;
+  }
 }
 
 #wrap {
   position: relative;
   width: 100%;
-  font-family: #{$G-font-family};
-  font-size: 1.6rem;
-  letter-spacing: -0.02em;
+  font-family: $G-font-family;
+  font-size: $G-font-size;
+  letter-spacing: $G-letter-spacing;
 
   //확대 축소를 막기
   &[user-scalable="false"],
@@ -33,6 +42,7 @@ body {
 #container {
   position: relative;
   z-index: 20;
+  padding-top: $G-header-height;
 }
 
 #footer {
@@ -43,7 +53,7 @@ body {
 .inner {
   position: relative;
   z-index: 1;
-  width: 111.7rem;
+  width: $G-inner-width;
   height: 100%;
   margin: 0 auto;
   @include clearBoth;

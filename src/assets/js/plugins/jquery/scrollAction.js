@@ -1,7 +1,7 @@
 /**
  *
  *   $.scrollAction({
- *       target: '#cont1',
+ *       $target: '#cont1',
  *       top: 0, // 0~100
  *       scrollDownAction : function(){
  *           // 스크롤 DOWN 액션
@@ -18,7 +18,7 @@ $.scrollAction = function () {
   // 기준요소, 화면기준0~100, 스크롤 내릴때 콜백, 스크롤 올릴때 콜백
   var arg = arguments[0];
 
-  var el = arg.target ? $(arg.target) : arguments[0];
+  var el = arg.$target ? $(arg.$target) : arguments[0];
   var actionPosition = arg.top ? arg.top / 100 : arguments[1] || 0;
   var callback1 = arg.scrollDownAction || arguments[2];
   var callback2 = arg.scrollUpAction || arguments[3];

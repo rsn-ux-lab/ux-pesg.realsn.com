@@ -14,6 +14,9 @@ export default {};
 .header-h1 {
   display: inline-flex;
   justify-content: flex-start;
-  flex-basis: 220px;
+  flex-basis: 22rem;
+  &__logo {
+    height: 3.6rem;
+  }
 }
 </style>

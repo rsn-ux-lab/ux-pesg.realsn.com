@@ -3,7 +3,7 @@ import Vue from "vue";
 import Router from "vue-router";
 
 //MAIN
-import Home from "@/views/Home";
+import Main from "@/views/Main";
 import Index from "@/views/Index";
 import Dashboard from "@/views/Dashboard";
 import Contact from "@/views/Contact";
@@ -22,27 +22,27 @@ window.router = new Router({
     },
     {
       path: "/",
-      name: Home,
-      component: Home,
+      name: "Main",
+      component: Main,
     },
     {
       path: "/index",
-      name: Index,
+      name: "Index",
       component: Index,
     },
     {
       path: "/dashboard",
-      name: Dashboard,
+      name: "Dashboard",
       component: Dashboard,
     },
     {
       path: "/insight",
-      name: Insight,
+      name: "Insight",
       component: Insight,
     },
     {
       path: "/contact",
-      name: Contact,
+      name: "Contact",
       component: Contact,
     },
   ],

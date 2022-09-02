@@ -43,11 +43,12 @@ export default {
   display: inline-flex;
   flex: 1;
   &__link {
-    margin-right: 40px;
+    margin-right: 4rem;
     font-family: "Jost";
     font-size: 1.8rem;
+    &:hover,
     &.is-active {
-      color: $G-colorPrimary;
+      color: $G-color-primary;
     }
   }
 }
