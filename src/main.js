@@ -7,6 +7,9 @@ import "./assets/scss/import.scss";
 import $ from "jquery";
 window.$ = $;
 
+/* config */
+import "./assets/js/config/files.js";
+
 /* utils */
 import "./assets/js/utils/utils";
 
