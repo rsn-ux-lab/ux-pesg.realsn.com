@@ -21,7 +21,7 @@ window.SERVER = new Object();
 if (HOST.localhost) {
   SERVER.api = "";
 } else {
-  SERVER.api = "//esgdevel.realsn.com";
+  SERVER.api = "https://esgdevel.realsn.com";
 }
 
 /*
