@@ -63,4 +63,20 @@ router.beforeEach(function (to, from, next) {
   }
 });
 
+/**
+ *
+ * SPA 404페이지 발생시 router 이동
+ *
+ */
+router.redirect404 = function () {
+  const isRedirect = new URLSearchParams(location.search).get("404");
+
+  if (isRedirect) {
+    const path = isRedirect.match(/(?<="\s*).*?(?=\s*")/gs).toString();
+
+    router.push(path);
+  }
+};
+router.redirect404();
+
 export default router;
