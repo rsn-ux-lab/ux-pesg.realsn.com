@@ -21,6 +21,9 @@ export default {
       imgPath: "@/assets/images",
     };
   },
+  mounted() {
+    //
+  },
 };
 </script>
 
