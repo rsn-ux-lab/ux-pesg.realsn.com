@@ -16,6 +16,14 @@
   right: 0;
   height: $G-header-height;
   background-color: #fff;
+  box-shadow: 0 0.1rem 1rem rgba(#000, 0.05);
+  @include transition($tgs: transform box-shodow);
+
+  &.is-hide {
+    box-shadow: 0 0.1rem 0.5rem rgba(#000, 0);
+    transform: translateY(-100%);
+  }
+
   .inner {
     display: flex;
     flex-wrap: nowrap;
@@ -37,42 +45,33 @@ export default {
   },
   watch: {
     $route() {
-      this.autoHide();
+      this.autoHeaderHide();
     },
   },
   methods: {
-    autoHide: function () {
-      $.getScrollDirection();
-
-      const $header = $("#header");
-      const winH = window.innerHeight;
-
-      // windows 1/3 이상 스크롤 이동시 "TOP Button" 노출-
+    autoHeaderHide() {
+      const $header = document.querySelector("#header");
+      const boundaryNum = 300;
       let status;
 
-      $(window).on("scroll", function () {
-        let winT = $(this).scrollTop();
-
-        if (winH / 3 < winT) {
-          if (!status) $header.removeClass("is-active");
-          status = true;
-        } else {
-          if (status) $header.addClass("is-active");
+      getScrollDirection({
+        scrollUp() {
+          if (status) $header.classList.remove("is-hide");
           status = false;
-        }
+        },
+        scrollDown(_args) {
+          const isStop = _args.scrollY > boundaryNum;
+
+          if (isStop) {
+            if (!status) $header.classList.add("is-hide");
+            status = true;
+          }
+        },
       });
-
-      // 3초 동안 스크롤 움직임이 없으면 "TOP Button" 감추기
-      setInterval(function () {
-        if (status) {
-          $header.addClass("is-active");
-          status = false;
-        }
-      }, 3000);
     },
   },
   mounted() {
-    this.autoHide();
+    this.autoHeaderHide();
   },
 };
 </script>
