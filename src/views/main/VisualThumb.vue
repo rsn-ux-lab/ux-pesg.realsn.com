@@ -6,7 +6,7 @@
 export default {};
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .visual-thumb {
   position: absolute;
   top: calc(50% + 2rem);

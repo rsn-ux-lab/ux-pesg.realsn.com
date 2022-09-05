@@ -1,7 +1,9 @@
 <template>
   <div id="wrap" data-target-device="pc">
     <Header />
-    <router-view />
+    <transition name="fade">
+      <router-view />
+    </transition>
     <Footer />
   </div>
 </template>
@@ -21,10 +23,54 @@ export default {
       imgPath: "@/assets/images",
     };
   },
+  watch: {
+    $route() {
+      this.onLoadCommon();
+    },
+  },
+  methods: {
+    onLoadCommon() {
+      //
+    },
+  },
   mounted() {
-    //
+    this.onLoadCommon();
+
+    /*
+    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    */
+    (function () {
+      /**
+       *
+       *  Device 체크 (custom data attributes)
+       *
+       */
+
+      let $wrap = $("#wrap");
+      let detail = $.getDevice().detail;
+
+      $wrap.attr("data-device-detail", detail);
+    })();
+    /*
+    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    */
   },
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition-property: opacity;
+  transition-duration: 0.25s;
+}
+
+.fade-enter-active {
+  transition-delay: 0.25s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+</style>

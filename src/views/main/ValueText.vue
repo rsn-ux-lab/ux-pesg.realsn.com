@@ -1,7 +1,7 @@
 <template>
-  <div class="score-text">
-    <h2 class="score-text__title ff-Jost">Score</h2>
-    <p class="score-text__desc">
+  <div class="value-text">
+    <h2 class="value-text__title ff-Jost">Value</h2>
+    <p class="value-text__desc">
       국내 상장기업의<br />
       현재 <span class="ff-Jost">P.ESG</span> 점수를<br />
       확인하세요.
@@ -14,7 +14,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.score-text {
+.value-text {
   position: absolute;
   top: 0;
   left: 0;

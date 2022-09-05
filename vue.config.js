@@ -9,6 +9,8 @@ module.exports = {
   },
   publicPath: "./",
   devServer: {
+    // host: "localhost", // CORS 차단 방지 실행시
+    // disableHostCheck: true,
     historyApiFallback: true,
     overlay: false,
     proxy: "https://esgdevel.realsn.com",

@@ -1,14 +1,14 @@
 <template>
-  <div class="score-swiper">
+  <div class="compare-swiper">
     <!-- Ttile -->
     <div class="swiper swiper--title">
       <ul class="swiper-wrapper">
-        <li class="swiper-slide">1. 기업 선택하기</li>
-        <li class="swiper-slide">2. 기업 선택하기</li>
-        <li class="swiper-slide">3. 기업 선택하기</li>
-        <li class="swiper-slide">4. 기업 선택하기</li>
-        <li class="swiper-slide">5. 기업 선택하기</li>
-        <li class="swiper-slide">6. 기업 선택하기</li>
+        <li class="swiper-slide">1. 검색된 기업 선택</li>
+        <li class="swiper-slide">2. 검색된 기업 선택</li>
+        <li class="swiper-slide">3. 검색된 기업 선택</li>
+        <li class="swiper-slide">4. 검색된 기업 선택</li>
+        <li class="swiper-slide">5. 검색된 기업 선택</li>
+        <li class="swiper-slide">6. 검색된 기업 선택</li>
       </ul>
     </div>
     <!-- Thumb -->
@@ -105,7 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.score-swiper::v-deep {
+.compare-swiper::v-deep {
   position: relative;
   height: 64rem;
   width: 100rem;
@@ -115,7 +115,7 @@ export default {
     .swiper-slide {
       font-size: 3rem;
       text-align: center;
-      color: #525252;
+      color: #d3d3d3;
       opacity: 0 !important;
       &-duplicate-active {
         opacity: 1 !important;

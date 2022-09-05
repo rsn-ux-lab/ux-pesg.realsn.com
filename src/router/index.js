@@ -11,7 +11,7 @@ import Insight from "@/views/Insight";
 
 Vue.use(Router);
 
-window.router = new Router({
+const router = new Router({
   mode: "history",
   routes: [
     {
@@ -58,6 +58,7 @@ window.router = new Router({
 //     // 이동할 페이지에 인증 정보가 필요하면 경고 창을 띄우고 페이지 전환은 하지 않음
 //     alert("Login Please!");
 //   } else {
+//     require("@/assets/js/pages/common");
 //     // console.log("routing success : '" + to.path + "'");
 //     next(); // 페이지 전환
 //   }

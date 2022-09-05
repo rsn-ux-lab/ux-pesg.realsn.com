@@ -9,13 +9,27 @@
         </a>
       </div>
     </div>
+    <img class="score-bg" src="@/assets/images/main/score_bg.png" alt="" />
   </section>
 </template>
 
 <script>
 import ScoreText from "./ScoreText.vue";
-import ScoreSwiper from "./scoreSwiper.vue";
+import ScoreSwiper from "./ScoreSwiper.vue";
 export default { components: { ScoreText, ScoreSwiper } };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.score {
+  overflow: hidden;
+  position: relative;
+  &-bg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: auto;
+    height: 54rem;
+    opacity: 0.15;
+  }
+}
+</style>

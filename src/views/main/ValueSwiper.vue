@@ -1,14 +1,14 @@
 <template>
-  <div class="score-swiper">
+  <div class="value-swiper">
     <!-- Ttile -->
     <div class="swiper swiper--title">
       <ul class="swiper-wrapper">
-        <li class="swiper-slide">1. 기업 선택하기</li>
-        <li class="swiper-slide">2. 기업 선택하기</li>
-        <li class="swiper-slide">3. 기업 선택하기</li>
-        <li class="swiper-slide">4. 기업 선택하기</li>
-        <li class="swiper-slide">5. 기업 선택하기</li>
-        <li class="swiper-slide">6. 기업 선택하기</li>
+        <li class="swiper-slide">1. 해당 기업 주가 RSI 노출</li>
+        <li class="swiper-slide">2. 해당 기업 주가 RSI 노출</li>
+        <li class="swiper-slide">3. 해당 기업 주가 RSI 노출</li>
+        <li class="swiper-slide">4. 해당 기업 주가 RSI 노출</li>
+        <li class="swiper-slide">5. 해당 기업 주가 RSI 노출</li>
+        <li class="swiper-slide">6. 해당 기업 주가 RSI 노출</li>
       </ul>
     </div>
     <!-- Thumb -->
@@ -105,7 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.score-swiper::v-deep {
+.value-swiper::v-deep {
   position: relative;
   height: 64rem;
   width: 100rem;

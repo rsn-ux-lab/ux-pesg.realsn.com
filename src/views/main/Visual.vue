@@ -16,16 +16,29 @@ export default {
     VisualText,
     VisualThumb,
   },
+  created() {
+    //
+  },
+  beforeEnter(el) {
+    // ...
+    console.log(el);
+  },
+  mounted() {
+    document.querySelector("#container").classList.remove("is-active");
+    document.querySelector("#container").classList.add("is-active");
+  },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /* visual */
+
 .visual {
   overflow: hidden;
   position: relative;
   height: 82.6rem;
   background-color: #eaf2f9;
+
   &::after {
     content: "";
     position: absolute;

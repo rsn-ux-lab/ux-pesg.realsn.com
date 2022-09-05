@@ -6,6 +6,8 @@ import "./assets/scss/import.scss";
 /* Lib */
 import $ from "jquery";
 window.$ = $;
+require("./assets/js/libs/swiper/swiper@7.3.2.min.css");
+window.Swiper = require("./assets/js/libs/swiper/swiper@7.3.2.min.js");
 
 /* config */
 import "./assets/js/config/files.js";
@@ -21,7 +23,7 @@ import "./assets/js/components/forms";
 // import "./components/layer";
 
 /* pages */
-import "./assets/js/pages/common";
+// import pageCommon from "@/assets/js/pages/common";
 
 /* Vue */
 import Vue from "vue";
