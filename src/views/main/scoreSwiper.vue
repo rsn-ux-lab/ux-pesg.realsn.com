@@ -105,7 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.score-swiper::v-deep {
+.score-swiper:deep() {
   position: relative;
   height: 64rem;
   width: 100rem;

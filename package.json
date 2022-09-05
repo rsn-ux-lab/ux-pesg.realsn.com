@@ -11,7 +11,7 @@
     "axios": "^0.27.2",
     "core-js": "^3.6.5",
     "jquery": "^3.5.1",
-    "vue": "^2.6.11",
+    "vue": "^2.6.14",
     "vue-plugin-load-script": "^1.3.2",
     "vue-router": "^3.4.8"
   },
@@ -26,7 +26,7 @@
     "multi-clamp": "^2.0.2",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.2.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {
     "root": true,

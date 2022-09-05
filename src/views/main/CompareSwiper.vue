@@ -105,7 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.compare-swiper::v-deep {
+.compare-swiper:deep() {
   position: relative;
   height: 64rem;
   width: 100rem;

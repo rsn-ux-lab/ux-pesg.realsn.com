@@ -8,15 +8,15 @@ html,
 body {
   width: 100%;
   height: 100%;
-  font-size: 6px;
+  font-size: 4px;
   @include lg {
-    font-size: 8px;
+    font-size: 6px;
   }
   @include xl {
-    font-size: 10px;
+    font-size: 8px;
   }
   @include qhd {
-    font-size: 11px;
+    font-size: 10px;
   }
   @include uhd {
     font-size: 18px;

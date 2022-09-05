@@ -105,7 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.value-swiper::v-deep {
+.value-swiper:deep() {
   position: relative;
   height: 64rem;
   width: 100rem;
