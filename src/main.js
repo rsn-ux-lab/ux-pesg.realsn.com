@@ -14,6 +14,7 @@ import "./assets/js/config/files.js";
 
 /* utils */
 import "./assets/js/utils/utils";
+import "./assets/js/utils/public";
 
 /* plugins */
 import "./assets/js/plugins/plugins";

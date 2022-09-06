@@ -49,6 +49,7 @@
 | NAME | Infomation                                       |
 | ---- | ------------------------------------------------ |
 | Node | v14.17.4                                         |
+| NPM  | v8.19.1                                          |
 | Dev. | Vue2, vue-router, Axios, ESM, jQuery, GSAP, SCSS |
 
 <br>

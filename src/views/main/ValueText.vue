@@ -2,9 +2,10 @@
   <div class="value-text">
     <h2 class="value-text__title ff-Jost">Value</h2>
     <p class="value-text__desc">
-      국내 상장기업의<br />
-      현재 <span class="ff-Jost">P.ESG</span> 점수를<br />
-      확인하세요.
+      <span class="ff-Jost">P.ESG</span>와 <br />
+      리스크 지표로 <br />
+      기업 <span class="ff-Jost">RSI</span> 가치와의 <br />
+      관계를 주목해 보세요.
     </p>
   </div>
 </template>

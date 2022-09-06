@@ -23,6 +23,7 @@ export default { components: { ValueText, ValueSwiper } };
 .value {
   overflow: hidden;
   position: relative;
+  background-color: #fbfbfb;
   &-bg {
     position: absolute;
     left: 13.9rem;

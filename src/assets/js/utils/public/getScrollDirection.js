@@ -2,6 +2,16 @@
  *
  * 스크롤 방향 가져오기
  *
+ * [script 작성 예]
+ * getScrollDirection({
+ *    scrollUp() {
+ *       // callback
+ *    },
+ *    scrollDown(_args) {
+ *       // callback
+ *    },
+ *  });
+ *
  */
 
 window.getScrollDirection = function () {

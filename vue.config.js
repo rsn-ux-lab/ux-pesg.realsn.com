@@ -23,6 +23,7 @@ module.exports = {
         additionalData: `
             @import "@/assets/scss/utils/_variables.scss";
             @import "@/assets/scss/utils/_mixins.scss";
+            @import "@/assets/scss/utils/_functions.scss";
             `,
       },
     },

@@ -1,8 +1,8 @@
 <template>
-  <div data-loding-spinner="true">
+  <main id="container" role="main">
     <h1>insight</h1>
     <List />
-  </div>
+  </main>
 </template>
 
 <script>
