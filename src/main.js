@@ -21,7 +21,6 @@ import "./assets/js/plugins/plugins";
 
 /* components */
 import "./assets/js/components/forms";
-// import "./components/layer";
 
 /* pages */
 // import pageCommon from "@/assets/js/pages/common";

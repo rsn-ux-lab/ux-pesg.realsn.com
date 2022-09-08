@@ -1,7 +1,6 @@
 <template>
   <div id="wrap" data-target-device="pc">
-    <Header v-bind:modal="modal"></Header>
-    <!-- <RoundButton @click="num = 1" class="btn btn-round" style="position: fixed; z-index: 100; top: 0">TEST</RoundButton> -->
+    <Header></Header>
     <transition name="fade">
       <router-view />
     </transition>
@@ -24,6 +23,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MyModal from "@/components/modal/Player.vue";
 import RoundButton from "./components/buttons/RoundButton.vue";
+import { layer } from "@/assets/js/components/layer";
 
 export default {
   name: "wrap",
@@ -46,6 +46,12 @@ export default {
   },
   methods: {
     //
+  },
+  created() {
+    //
+    layer.$on("show", (_isShow) => {
+      this.modal = _isShow;
+    });
   },
   mounted() {
     /*

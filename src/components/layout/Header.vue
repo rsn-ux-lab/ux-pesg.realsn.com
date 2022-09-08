@@ -1,7 +1,7 @@
 <template>
   <header id="header" class="header" role="banner">
-    <button @click="passEvent" class="btn btn-round">test</button>
-    <h1>{{ modal }}</h1>
+    <!-- <button @click="passEvent" class="btn btn-round">test</button>
+    <h1>{{ modal }}</h1> -->
     <div class="inner">
       <link-logo></link-logo>
       <HeaderGnb />
