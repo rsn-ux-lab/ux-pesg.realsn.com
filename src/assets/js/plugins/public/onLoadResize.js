@@ -3,7 +3,7 @@
  * window resize event ▼
  *
  * [script 작성 예]
- * onLoadResize({
+ * window.onLoadResize({
  *    callback() {
  *       //callback
  *     },
@@ -17,7 +17,7 @@ window.onLoadResize = function () {
     timer: null,
     callback: false,
   };
-  let option = { ...default_option, ...arguments[0] };
+  let option = typeof arguments[0] === "function" ? { ...(default_option.callback = arguments[0]), ...default_option } : { ...default_option, ...arguments[0] };
 
   window.addEventListener("resize", function () {
     clearTimeout(option.timer);

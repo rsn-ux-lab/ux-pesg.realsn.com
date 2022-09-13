@@ -4,39 +4,35 @@
     <transition name="fade">
       <router-view />
     </transition>
-    <Footer />
-    <MyModal v-if="modal">
-      <!-- default 슬롯 콘텐츠 -->
-      <p>Vue.js Modal Window!</p>
-      <!-- /default -->
-      <!-- footer 슬롯 콘텐츠 -->
-      <template slot="footer">
-        <button @click="modal = false">닫기</button>
-      </template>
-      <!-- /footer -->
-    </MyModal>
+    <Footer></Footer>
+    <Player></Player>
+    <PopupTerms></PopupTerms>
+    <PopupPersonal></PopupPersonal>
+    <PopuprRefusal></PopuprRefusal>
   </div>
 </template>
 
 <script>
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import MyModal from "@/components/modal/Player.vue";
-import RoundButton from "./components/buttons/RoundButton.vue";
-import { layer } from "@/assets/js/components/layer";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import Player from "./components/modal/Player.vue";
+import PopupTerms from "./views/common/PopupTerms.vue";
+import PopupPersonal from "./views/common/PopupPersonal.vue";
+import PopuprRefusal from "./views/common/PopuprRefusal.vue";
 
 export default {
   name: "wrap",
   components: {
     Header,
     Footer,
-    MyModal,
-    RoundButton,
+    Player,
+    PopupTerms,
+    PopupPersonal,
+    PopuprRefusal,
   },
   data() {
     return {
-      modal: false,
-      imgPath: "@/assets/images",
+      //
     };
   },
   watch: {
@@ -49,34 +45,15 @@ export default {
   },
   created() {
     //
-    layer.$on("show", (_isShow) => {
-      this.modal = _isShow;
-    });
   },
   mounted() {
-    /*
-    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    */
-    (function () {
-      /**
-       *
-       *  Device 체크 (custom data attributes)
-       *
-       */
-
-      let $wrap = $("#wrap");
-      let detail = $.getDevice().detail;
-
-      $wrap.attr("data-device-detail", detail);
-    })();
-    /*
-    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    */
+    /* pages - 공통 */
+    require("@/assets/js/pages/common.js");
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .fade-enter-active,
 .fade-leave-active {
   transition-property: opacity;

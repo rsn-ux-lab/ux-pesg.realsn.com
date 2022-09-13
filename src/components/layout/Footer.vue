@@ -4,11 +4,11 @@
     <div class="footer-inner">
       <div class="inner">
         <div class="about">
-          <link-logo></link-logo>
+          <linkLogo></linkLogo>
           <div class="about-list">
-            <a class="about-list__link">서비스 이용약관</a>
-            <a class="about-list__link">개인정보 처리방침</a>
-            <a class="about-list__link">이메일무단수집거부</a>
+            <a class="about-list__link" @click="isShow('popupTerms')">서비스 이용약관</a>
+            <a class="about-list__link" @click="isShow('popupPersonal')">개인정보 처리방침</a>
+            <a class="about-list__link" @click="isShow('popuprRefusal')">이메일무단수집거부</a>
           </div>
         </div>
         <div class="contact">
@@ -25,6 +25,87 @@
     <div class="footer-bg"></div>
   </footer>
 </template>
+
+<script>
+import * as eventBus from "@/eventBus.js";
+import linkLogo from "../buttons/linkLogo.vue";
+
+export default {
+  components: {
+    linkLogo,
+  },
+  watch: {
+    $route() {
+      this.scrollingAction();
+      this.moveFooterFix();
+    },
+  },
+  methods: {
+    isShow(_key) {
+      eventBus[_key].$emit("isShow", "true");
+    },
+    moveFooterFix() {
+      /**
+       *
+       *  Footer 위치를 하단에 붙이기
+       *
+       */
+      const $container = document.querySelector("#container");
+      const $footer = document.querySelector("#footer");
+
+      // window resize event
+      window.onLoadResize(() => {
+        const winH = window.innerHeight;
+        const footerH = $footer.offsetHeight;
+        const afterContainerH = Math.abs(winH - footerH);
+
+        $container.style.minHeight = afterContainerH + "px";
+      });
+    },
+    scrollingAction() {
+      /**
+       *
+       *  Footer 스크롤 인터랙션
+       *
+       */
+      const $container = document.querySelector("#container");
+      const $footer = document.querySelector("#footer");
+      let status;
+
+      document.addEventListener("scroll", () => {
+        const scrollBottom = window.scrollY + window.innerHeight;
+        const containerH = $container.offsetHeight;
+        const footerH = $footer.offsetHeight;
+
+        if (scrollBottom >= containerH) {
+          let posT = Math.abs(((scrollBottom - containerH) / footerH) * 1);
+          let Y = posT >= 1 ? 1 : posT;
+
+          if (status) {
+            $footer.querySelector(".footer-overlay").style.opacity = Math.abs(Y - 1);
+            $footer.querySelector(".inner").style.transform = "translateY(" + Math.abs(Y * 100 - 100) + "px)";
+          }
+          status = true;
+        } else status = false;
+      });
+
+      // $footer.querySelector(".inner").style.transform = "translateY(0)";
+      $footer.querySelector(".footer-overlay").style.opacity = 0;
+
+      // window.onLoadResize(() => {
+      //   const winH = window.innerHeight;
+      //   const containerH = $container.offsetHeight;
+
+      //   if (winH >= containerH) $footer.querySelector(".footer-overlay").style.opacity = 0;
+      // });
+    },
+  },
+  mounted() {
+    this.scrollingAction();
+    this.moveFooterFix();
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 /* footer */
@@ -116,35 +197,3 @@
   }
 }
 </style>
-
-<script>
-import linkLogo from "../buttons/linkLogo.vue";
-export default {
-  components: {
-    linkLogo,
-  },
-  mounted() {
-    const $footer = $("#footer");
-    const footerH = $footer.outerHeight();
-    let status;
-
-    $(window).on("scroll", function () {
-      let scrollBottom = $(window).scrollTop() + $(window).height();
-      const containerH = $("#container").height();
-
-      if (scrollBottom >= containerH) {
-        let posT = Math.abs(((scrollBottom - containerH) / footerH) * 1);
-        let Y = posT >= 1 ? 1 : posT;
-
-        if (status) {
-          $footer.find(".footer-overlay").css("opacity", Math.abs(Y - 1));
-          $footer.find(".inner").css("transform", "translateY(" + Math.abs(Y * 100 - 100) + "px)");
-        }
-        status = true;
-      } else {
-        status = false;
-      }
-    });
-  },
-};
-</script>

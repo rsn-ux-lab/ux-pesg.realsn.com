@@ -1,57 +1,32 @@
 <template>
-  <transition name="modal" appear @close="isClose(false)" v-if="isShow">
+  <transition name="modal" appear>
     <article class="modal">
       <div class="modal-wrapper">
         <header class="modal-header">
-          <button class="modal-header__icon-close" title="창닫기" type="button" @click="isShow = false"><i class="icon-close"></i></button>
-          <h1 class="modal-header__title clamp-1">동영상 제목</h1>
+          <button class="modal-header__icon-close" title="창닫기" type="button" @click="$emit('close')"><i class="icon-close"></i></button>
+          <h1 class="modal-header__title clamp-1">
+            <slot name="title">팝업제목을 입력하세요.</slot>
+          </h1>
         </header>
-        <main class="modal-body">youtube 링크</main>
+        <main class="modal-body">
+          <slot name="body">본문내용을 입력하세요.</slot>
+        </main>
+        <!-- <footer class="modal-footer">하단</footer> -->
       </div>
-      <i class="modal-dimmed" aria-hidden="true" @click="isShow = false"></i>
+      <i class="modal-dimmed" aria-hidden="true" @click.self="$emit('close')"></i>
     </article>
   </transition>
 </template>
 
 <script>
-import * as eventBus from "@/eventBus.js";
-
 export default {
-  data() {
-    return {
-      isShow: false,
-    };
-  },
-  methods: {
-    isClose(_isClose) {
-      this.isShow = _isClose;
-    },
-  },
   created() {
-    // Modal Active
-    eventBus.player.$on("isShow", (_isShow) => (this.isShow = _isShow));
-
-    // ESC 창닫기
-    window.addEventListener(
-      "keydown",
-      (e) => {
-        if (this.isShow && e.key === "Escape") {
-          this.isShow = false;
-        }
-      },
-      true
-    );
-  },
-  mounted() {
-    //
+    /* body scroll lock */
+    window.lockBody();
   },
   destroyed() {
-    //
-  },
-  updated() {
-    /* body scroll lock/unlock */
-    if (this.isShow) window.lockBody();
-    else window.unlockBody();
+    /* body scroll unlock */
+    window.unlockBody();
   },
 };
 </script>

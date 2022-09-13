@@ -1,6 +1,9 @@
 /**
  *
- * 스크롤 이동
+ *  클릭시 해당 위치로 스크롤 이동
+ *
+ *  [html 작성 예]
+ *  <button class="js-anchor" data-anchor="선택자", data-anchor-except="제외할 높이(숫자 또는 선택자)"></button>
  *
  */
 

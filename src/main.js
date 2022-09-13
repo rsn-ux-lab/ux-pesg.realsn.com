@@ -17,13 +17,11 @@ import "./assets/js/utils/utils";
 import "./assets/js/utils/public";
 
 /* plugins */
-import "./assets/js/plugins/plugins";
+import "./assets/js/plugins/jquery";
+import "./assets/js/plugins/public";
 
 /* components */
 import "./assets/js/components/forms";
-
-/* pages */
-// import pageCommon from "@/assets/js/pages/common";
 
 /* Vue */
 import Vue from "vue";
@@ -32,7 +30,7 @@ import router from "./router";
 
 Vue.config.productionTip = false;
 
-document.addEventListener("DOMContentLoaded", async function (event) {
+document.addEventListener("DOMContentLoaded", async function (_e) {
   new Vue({
     el: "#wrap",
     router,

@@ -1,9 +1,10 @@
 <template>
   <h1 class="logo">
     <router-link
-      class="logo__link"
+      class="logo__link js-anchor"
       to="/"
       title="메인으로 이동하기"
+      data-anchor="#wrap"
       :style="{ backgroundImage: `url(${require('@/assets/images/common/logo.png')})` }"
     ></router-link>
   </h1>

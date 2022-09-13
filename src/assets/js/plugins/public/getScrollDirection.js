@@ -3,7 +3,7 @@
  * 스크롤 방향 가져오기
  *
  * [script 작성 예]
- * getScrollDirection({
+ * window.getScrollDirection({
  *    scrollUp() {
  *       // callback
  *    },
@@ -29,11 +29,12 @@ window.getScrollDirection = function () {
     scrollY: 0,
     scrollUp: false,
     scrollDown: false,
+    watch: false,
   };
-  let option = { ...default_option, ...arguments[0] };
+  let option = typeof arguments[0] === "function" ? { ...(default_option.watch = arguments[0]), ...default_option } : { ...default_option, ...arguments[0] };
   let lastScrollY = 0;
 
-  addEventListener("scroll", (e) => {
+  document.addEventListener("scroll", () => {
     option.scrollY = window.scrollY;
 
     // 이전의 스크롤 위치와 비교하기
@@ -44,5 +45,7 @@ window.getScrollDirection = function () {
 
     if (isScrollUp) option.scrollUp && option.scrollUp(option);
     else option.scrollDown && option.scrollDown(option);
+
+    if (option.watch) option.watch(option);
   });
 };

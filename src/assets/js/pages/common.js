@@ -1,5 +1,4 @@
 import $ from "jquery";
-console.log("common.js");
 
 (function () {
   /**
@@ -233,27 +232,5 @@ console.log("common.js");
   }, 3000);
 })();
 /*
-  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-  */
-(function () {
-  /**
-   *
-   * #footer 위치를 하단에 붙이기
-   *
-   */
-  let $container = $("#container");
-  let $footer = $("#footer");
-  let footerH = $footer.height();
-  let resizeHeight = () => {
-    let afterContainerH = Math.abs(innerHeight - footerH);
-
-    $container.css("min-height", afterContainerH);
-  };
-
-  resizeHeight();
-
-  // window resize event
-  window.addEventListener("optimizedResize", () => {
-    resizeHeight();
-  });
-})();
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
