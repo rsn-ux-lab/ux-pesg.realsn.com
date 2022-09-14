@@ -1,12 +1,10 @@
 <template>
-  <section class="score pt-110">
+  <section class="score pt-110 js-is-appear">
     <div class="inner">
       <ScoreText></ScoreText>
-      <ScoreSwiper></ScoreSwiper>
+      <SwiperMain :inBoundData="outBoundData"></SwiperMain>
       <div class="text-center mb-65">
-        <a href="//esgdevel.realsn.com/esgSystem/member/register" class="btn btn-round-grad btn-round-grad--xlg btn-round-grad--is-shadow" target="_blank">
-          <span class="txt">회원가입하고 더 많은 기업정보 확인하기</span>
-        </a>
+        <LinkJoin class="btn-round-grad btn-round-grad--xlg btn-round-grad--is-shadow">회원가입하고 더 많은 기업정보 확인하기</LinkJoin>
       </div>
     </div>
     <img class="score-bg" src="@/assets/images/main/score_bg.png" alt="" />
@@ -15,8 +13,43 @@
 
 <script>
 import ScoreText from "./ScoreText.vue";
-import ScoreSwiper from "./ScoreSwiper.vue";
-export default { components: { ScoreText, ScoreSwiper } };
+import SwiperMain from "../../components/etc/SwiperMain.vue";
+import LinkJoin from "../../components/buttons/linkJoin.vue";
+
+export default {
+  name: "score",
+  components: {
+    ScoreText,
+    SwiperMain,
+    LinkJoin,
+  },
+  data() {
+    return {
+      outBoundData: [
+        {
+          title: "1. 기업 선택하기",
+          img: require("@/assets/images/sample_slide/sample1.png"),
+        },
+        {
+          title: "2. 기업 선택하기",
+          img: require("@/assets/images/sample_slide/sample2.png"),
+        },
+        {
+          title: "3. 기업 선택하기",
+          img: require("@/assets/images/sample_slide/sample3.png"),
+        },
+        {
+          title: "4. 기업 선택하기",
+          img: require("@/assets/images/sample_slide/sample4.png"),
+        },
+        {
+          title: "5. 기업 선택하기",
+          img: require("@/assets/images/sample_slide/sample5.png"),
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

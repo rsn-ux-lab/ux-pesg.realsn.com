@@ -33,7 +33,8 @@ export default {
 
 <style lang="scss" scoped>
 .modal {
-  $p: &;
+  $m: &;
+
   &-wrapper {
     overflow: hidden;
     min-width: 50rem;
@@ -62,12 +63,12 @@ export default {
   }
   &-enter-active,
   &-leave-active {
-    transition: none 2s;
+    transition-delay: 2s;
 
-    #{$p}-wrapper {
+    #{$m}-wrapper {
       @include transition($tgs: opacity transform, $time: 0.2, $delay: 0.2);
     }
-    #{$p}-dimmed {
+    #{$m}-dimmed {
       @include transition($tgs: opacity, $time: 0.2);
     }
   }
@@ -77,12 +78,12 @@ export default {
   &-enter,
   &-leave-to {
     transition: none 1s;
-    #{$p}-wrapper {
+    #{$m}-wrapper {
       opacity: 0;
       transform: translate(-50%, -45%);
       @include transition($tgs: opacity transform, $time: 0.4);
     }
-    #{$p}-dimmed {
+    #{$m}-dimmed {
       opacity: 0;
       @include transition($tgs: opacity, $time: 0.4, $delay: 0.4);
     }

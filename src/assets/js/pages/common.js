@@ -1,4 +1,5 @@
 import $ from "jquery";
+console.log("D");
 
 (function () {
   /**
@@ -107,10 +108,10 @@ import $ from "jquery";
    *
    *  [html 작성 예]
    *      //기본값 적용시
-   *      <div class="isAppear">
+   *      <div class="js-is-appear">
    *
    *      //scroll.top 사용자값 입력시(예: class 뒤에 숫자 입력)
-   *      <div class="isAppear50">
+   *      <div class="js-is-appear50">
    *
    *  [CSS 작성 예]
    *      div {opacity:0;transition:none}
@@ -118,33 +119,33 @@ import $ from "jquery";
    *
    */
 
-  var $wrap = $("[class*=js-is-appear]");
+  console.log("C");
 
-  $wrap.each(function () {
-    var $this = $(this);
-    var classAll = $this.attr("class").split(" ");
+  const $appears = document.querySelectorAll("[class*=js-is-appear]");
 
-    //scroll.top 옵션값 유,무
-    var top = filterList(classAll, function (className) {
-      if (className.indexOf("is-appear") !== -1) {
-        var num = className.replace(/[^0-9]/g, "");
+  $appears.forEach((_each) => {
+    const $this = _each;
+    const classNames = $this.getAttribute("class").split(" ");
+    const posY = classNames
+      .map((_arr) => {
+        if (_arr.indexOf("js-is-appear") !== -1) {
+          let num = Number(_arr.replace(/[^0-9]/g, ""));
 
-        $this.removeClass(className); //removeClass
-        return (num = num !== "" ? num : 70); //scroll.top 기본값 70 설정함
-      }
-    })[0];
+          $this.classList.remove(_arr); //removeClass
+          return (num = num !== 0 ? num : 70); //scroll.top 기본값 70 설정함
+        }
+      })
+      .filter((_el) => _el)[0];
 
-    //addClass('is-appear')
-    scrollAction({
-      target: $this,
-      top: Number(top),
+    // addClass('js-is-appear')
+    $.scrollAction({
+      $target: $this,
+      top: posY,
       scrollDownAction: function () {
-        $this.addClass("appear");
+        $this.classList.add("is-appear");
       },
       scrollUpAction: function () {
-        if (isReal == false) {
-          $this.removeClass("is-appear");
-        }
+        $this.classList.remove("is-appear");
       },
     });
   });

@@ -9,9 +9,7 @@
       기업의 <span class="ff-Jost">ESG</span> 역량<span class="ff-Jost">(Performance)</span>를 감지<span class="ff-Jost">(Perceive)</span>하고 평가하는
       <span class="ff-Jost">Index</span>입니다.
     </p>
-    <a href="//esgdevel.realsn.com/esgSystem/member/register" class="btn btn-round-grad btn-round-grad--lg mr-10" target="_blank">
-      <span class="txt">무료회원 가입하기</span>
-    </a>
+    <LinkJoin class="btn-round-grad btn-round-grad--lg mr-10">무료회원 가입하기</LinkJoin>
     <router-link class="btn btn-round-border btn-round-border--lg btn-round-border--black pl-60 pr-60" to="/contact">
       <span class="txt">문의하기</span>
     </router-link>
@@ -19,7 +17,14 @@
 </template>
 
 <script>
-export default {};
+import LinkJoin from "../../components/buttons/linkJoin.vue";
+
+export default {
+  name: "visual-text",
+  components: {
+    LinkJoin,
+  },
+};
 </script>
 
 <style lang="scss">

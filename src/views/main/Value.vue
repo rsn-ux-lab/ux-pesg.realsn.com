@@ -2,11 +2,9 @@
   <section class="value pt-110">
     <div class="inner">
       <ValueText></ValueText>
-      <ValueSwiper></ValueSwiper>
+      <SwiperMain :inBoundData="outBoundData"></SwiperMain>
       <div class="text-center mb-65">
-        <a href="//esgdevel.realsn.com/esgSystem/member/register" class="btn btn-round-grad btn-round-grad--xlg btn-round-grad--is-shadow" target="_blank">
-          <span class="txt">회원가입하고 더 많은 기업정보 확인하기</span>
-        </a>
+        <LinkJoin class="btn-round-grad btn-round-grad--xlg btn-round-grad--is-shadow">회원가입하고 더 많은 기업정보 확인하기</LinkJoin>
       </div>
     </div>
     <img class="value-bg" src="@/assets/images/main/value_bg.png" alt="" />
@@ -15,8 +13,43 @@
 
 <script>
 import ValueText from "./ValueText.vue";
-import ValueSwiper from "./ValueSwiper.vue";
-export default { components: { ValueText, ValueSwiper } };
+import SwiperMain from "../../components/etc/SwiperMain.vue";
+import LinkJoin from "../../components/buttons/linkJoin.vue";
+
+export default {
+  name: "value",
+  components: {
+    ValueText,
+    SwiperMain,
+    LinkJoin,
+  },
+  data() {
+    return {
+      outBoundData: [
+        {
+          title: "1. 해당 기업 주가 RSI 노출",
+          img: require("@/assets/images/sample_slide/sample1.png"),
+        },
+        {
+          title: "2. 해당 기업 주가 RSI 노출",
+          img: require("@/assets/images/sample_slide/sample2.png"),
+        },
+        {
+          title: "3. 해당 기업 주가 RSI 노출",
+          img: require("@/assets/images/sample_slide/sample3.png"),
+        },
+        {
+          title: "4. 해당 기업 주가 RSI 노출",
+          img: require("@/assets/images/sample_slide/sample4.png"),
+        },
+        {
+          title: "5. 해당 기업 주가 RSI 노출",
+          img: require("@/assets/images/sample_slide/sample5.png"),
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

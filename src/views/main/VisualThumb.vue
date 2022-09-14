@@ -1,5 +1,7 @@
 <template>
-  <div class="visual-thumb"></div>
+  <transition name="visual-thumb" appear>
+    <div class="visual-thumb"></div>
+  </transition>
 </template>
 
 <script>
@@ -8,6 +10,8 @@ export default {};
 
 <style lang="scss" scoped>
 .visual-thumb {
+  $v: &;
+
   position: absolute;
   top: calc(50% + 2rem);
   right: 0;
@@ -17,5 +21,13 @@ export default {};
   border-radius: 2rem;
   background-color: rgba(#fff, 0.3);
   transform: translate(39.5rem, -50%);
+  &-enter-active,
+  &-leave-active {
+    @include transition($tgs: transform, $delay: $G-container-delay);
+  }
+  &-enter,
+  &-leave-to {
+    transform: translate(50.5rem, -50%);
+  }
 }
 </style>

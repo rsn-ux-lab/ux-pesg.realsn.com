@@ -1,35 +1,15 @@
 <template>
-  <div class="score-swiper">
+  <div class="swiper-main">
     <!-- Ttile -->
     <div class="swiper swiper--title">
       <ul class="swiper-wrapper">
-        <li class="swiper-slide">1. 기업 선택하기</li>
-        <li class="swiper-slide">2. 기업 선택하기</li>
-        <li class="swiper-slide">3. 기업 선택하기</li>
-        <li class="swiper-slide">4. 기업 선택하기</li>
-        <li class="swiper-slide">5. 기업 선택하기</li>
-        <li class="swiper-slide">6. 기업 선택하기</li>
+        <li class="swiper-slide" v-for="title in this.datas.title">{{ title }}</li>
       </ul>
     </div>
     <!-- Thumb -->
     <div class="swiper swiper--thumb">
       <ul class="swiper-wrapper">
-        <li class="swiper-slide swiper-lazy" :style="{ backgroundImage: `url(${require('@/assets/images/sample_slide/sample1.png')})` }">
-          <i class="swiper-lazy-preloader swiper-lazy-preloader-white"></i>
-        </li>
-        <li class="swiper-slide swiper-lazy" :style="{ backgroundImage: `url(${require('@/assets/images/sample_slide/sample2.png')})` }">
-          <i class="swiper-lazy-preloader swiper-lazy-preloader-white"></i>
-        </li>
-        <li class="swiper-slide swiper-lazy" :style="{ backgroundImage: `url(${require('@/assets/images/sample_slide/sample3.png')})` }">
-          <i class="swiper-lazy-preloader swiper-lazy-preloader-white"></i>
-        </li>
-        <li class="swiper-slide swiper-lazy" :style="{ backgroundImage: `url(${require('@/assets/images/sample_slide/sample4.png')})` }">
-          <i class="swiper-lazy-preloader swiper-lazy-preloader-white"></i>
-        </li>
-        <li class="swiper-slide swiper-lazy" :style="{ backgroundImage: `url(${require('@/assets/images/sample_slide/sample5.png')})` }">
-          <i class="swiper-lazy-preloader swiper-lazy-preloader-white"></i>
-        </li>
-        <li class="swiper-slide swiper-lazy" :style="{ backgroundImage: `url(${require('@/assets/images/sample_slide/sample6.png')})` }">
+        <li class="swiper-slide swiper-lazy" v-for="img in this.datas.img" :style="{ backgroundImage: `url(${img})` }"">
           <i class="swiper-lazy-preloader swiper-lazy-preloader-white"></i>
         </li>
       </ul>
@@ -45,11 +25,32 @@
 </template>
 
 <script>
+import swiper from "../../assets/js/libs/swiper/swiper";
+
 export default {
+  props: {
+    inBoundData: {
+      type: Array,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      //
+    };
+  },
+  created() {    
+    /* JSON 데이터 변환 */
+    this.datas = JSON.parse(JSON.stringify(this.inBoundData));
+
+    /* 데이터 추출 */
+    this.datas.title = this.datas.map((_arr) => _arr.title);
+    this.datas.img = this.datas.map((_arr) => _arr.img);
+  },
   mounted() {
     const $wrap = this.$el;
-
-    // Title
+    
+    /* swiper - title */ 
     const $swiperTitle = $wrap.querySelector(".swiper--title");
     let swiperTitle = new Swiper($swiperTitle, {
       slidesPerView: 1,
@@ -58,11 +59,11 @@ export default {
       effect: "fade",
     });
 
-    // Thumb
+    /* swiper - thumb */ 
     const $swiperThumb = $wrap.querySelector(".swiper--thumb");
     let swiperThumb = new Swiper($swiperThumb, {
       autoplay: {
-        delay: 4000,
+        delay: 3000,
         disableOnInteraction: false,
       },
       speed: 1000,
@@ -98,14 +99,32 @@ export default {
       },
     });
 
+    // swiper control 동기화
     swiperTitle.controller.control = swiperThumb;
     swiperThumb.controller.control = swiperTitle;
+
+    // swiper 위치 초기화
+    swiperThumb.autoplay.stop();    
+    
+    $.scrollAction({
+        $target: $wrap,
+        top: 100,
+        scrollDownAction : function(){          
+            // 스크롤 DOWN 액션
+            swiperThumb.autoplay.start();
+        },
+        scrollUpAction : function(){          
+            // 스크롤 UP 액션
+            swiperThumb.slideTo($($swiperThumb).find('.swiper-slide[data-swiper-slide-index="0"]').index(), 0, false);
+            swiperThumb.autoplay.stop();
+        }
+    });
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.score-swiper:deep() {
+.swiper-main:deep() {
   position: relative;
   height: 64rem;
   width: 100rem;

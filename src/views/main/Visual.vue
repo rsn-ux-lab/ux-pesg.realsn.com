@@ -1,5 +1,5 @@
 <template>
-  <section class="visual">
+  <section class="visual js-is-appear">
     <div class="inner">
       <VisualText />
       <VisualThumb />
