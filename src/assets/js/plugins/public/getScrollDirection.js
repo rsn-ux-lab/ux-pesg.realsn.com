@@ -21,7 +21,7 @@ window.getScrollDirection = function () {
       throw new Error("함수 리터럴 정보가 없습니다.");
     }
   } catch (err) {
-    console.error("$.getScrollDirection", err);
+    console.error("window.getScrollDirection", err);
     return;
   }
 
@@ -48,4 +48,5 @@ window.getScrollDirection = function () {
 
     if (option.watch) option.watch(option);
   });
+  if (option.watch) option.watch(option);
 };

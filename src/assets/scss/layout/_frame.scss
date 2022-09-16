@@ -26,6 +26,7 @@ body {
 #wrap {
   position: relative;
   width: 100%;
+  min-width: $G-inner-width;
   font-family: $G-font-family;
   font-size: $G-font-size;
   letter-spacing: $G-letter-spacing;

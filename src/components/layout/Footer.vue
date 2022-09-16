@@ -34,47 +34,29 @@ export default {
   components: {
     linkLogo,
   },
+  data() {
+    return {
+      $container: "",
+    };
+  },
   watch: {
     $route() {
       this.scrollingAction();
-      this.moveFooterFix();
     },
   },
   methods: {
     isShow(_key) {
       eventBus[_key].$emit("isShow", "true");
     },
-    moveFooterFix() {
-      /**
-       *
-       *  Footer 위치를 하단에 붙이기
-       *
-       */
-      const $container = document.querySelector("#container");
-      const $footer = document.querySelector("#footer");
-
-      // window resize event
-      window.onLoadResize(() => {
-        const winH = window.innerHeight;
-        const footerH = $footer.offsetHeight;
-        const afterContainerH = Math.abs(winH - footerH);
-
-        $container.style.minHeight = afterContainerH + "px";
-      });
-    },
     scrollingAction() {
-      /**
-       *
-       *  Footer 스크롤 인터랙션
-       *
-       */
-      const $container = document.querySelector("#container");
+      /* Footer 스크롤 인터랙션 */
       const $footer = document.querySelector("#footer");
-      let status;
+      let status = true;
 
       document.addEventListener("scroll", () => {
-        const scrollBottom = window.scrollY + window.innerHeight;
+        const $container = document.querySelector("#container");
         const containerH = $container.offsetHeight;
+        const scrollBottom = window.scrollY + window.innerHeight;
         const footerH = $footer.offsetHeight;
 
         if (scrollBottom >= containerH) {
@@ -89,20 +71,18 @@ export default {
         } else status = false;
       });
 
-      // $footer.querySelector(".inner").style.transform = "translateY(0)";
+      $footer.querySelector(".inner").style.transform = "translateY(0)";
       $footer.querySelector(".footer-overlay").style.opacity = 0;
-
-      // window.onLoadResize(() => {
-      //   const winH = window.innerHeight;
-      //   const containerH = $container.offsetHeight;
-
-      //   if (winH >= containerH) $footer.querySelector(".footer-overlay").style.opacity = 0;
-      // });
     },
+  },
+  created() {
+    //
   },
   mounted() {
     this.scrollingAction();
-    this.moveFooterFix();
+  },
+  updated() {
+    //
   },
 };
 </script>
@@ -113,7 +93,6 @@ export default {
   $footerH: 37.5rem;
 
   position: relative;
-  padding: 10rem 0;
   height: $footerH;
   &-inner {
     position: fixed;

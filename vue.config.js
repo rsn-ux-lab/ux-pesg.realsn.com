@@ -24,6 +24,7 @@ module.exports = {
             @import "@/assets/scss/utils/_variables.scss";
             @import "@/assets/scss/utils/_mixins.scss";
             @import "@/assets/scss/utils/_functions.scss";
+            @import "@/assets/scss/components/_icons.scss";
             `,
       },
     },

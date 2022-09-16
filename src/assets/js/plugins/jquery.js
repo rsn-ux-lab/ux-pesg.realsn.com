@@ -51,25 +51,6 @@ import "./jquery/wait";
 
 /**
  *
- *    window resize event ▼
- *    [script 작성 예]
- *        $.loadResize(function () {
- *           console.log("callback");
- *        });
- *
- *    [console 출력결과]
- *        callback
- *
- */
-
-import "./jquery/onloadResize";
-
-/*
- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
- */
-
-/**
- *
  *   $.scrollAction({
  *       target: '#cont1',
  *       top: 0, // 0~100
@@ -289,6 +270,27 @@ import "./jquery/attrchange";
  */
 
 import "./jquery/keyframes";
+
+/*
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+ */
+
+/**
+ *
+ *  sticky
+ *
+ *  [script 작성 예]
+ *   $.sticky({
+ *     $target: this.$el,
+ *     position: "bottom", // top, bottom
+ *     callback: (_args) => {
+ *       console.log(_args);
+ *     },
+ *   });
+ *
+ */
+
+import "./jquery/sticky";
 
 /*
  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■

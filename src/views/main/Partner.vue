@@ -20,7 +20,7 @@ export default {};
 
 <style lang="scss" scoped>
 .partner {
-  padding-bottom: 20rem;
+  padding: 10rem 0 20rem;
   .inner {
     width: 132rem;
   }

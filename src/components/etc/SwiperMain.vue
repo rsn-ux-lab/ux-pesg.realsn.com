@@ -9,7 +9,7 @@
     <!-- Thumb -->
     <div class="swiper swiper--thumb">
       <ul class="swiper-wrapper">
-        <li class="swiper-slide swiper-lazy" v-for="img in this.datas.img" :style="{ backgroundImage: `url(${img})` }"">
+        <li class="swiper-slide swiper-lazy" v-for="img in this.datas.img" :style="{ backgroundImage: `url(${img})` }">
           <i class="swiper-lazy-preloader swiper-lazy-preloader-white"></i>
         </li>
       </ul>
@@ -39,7 +39,7 @@ export default {
       //
     };
   },
-  created() {    
+  created() {
     /* JSON 데이터 변환 */
     this.datas = JSON.parse(JSON.stringify(this.inBoundData));
 
@@ -49,8 +49,8 @@ export default {
   },
   mounted() {
     const $wrap = this.$el;
-    
-    /* swiper - title */ 
+
+    /* swiper - title */
     const $swiperTitle = $wrap.querySelector(".swiper--title");
     let swiperTitle = new Swiper($swiperTitle, {
       slidesPerView: 1,
@@ -59,7 +59,7 @@ export default {
       effect: "fade",
     });
 
-    /* swiper - thumb */ 
+    /* swiper - thumb */
     const $swiperThumb = $wrap.querySelector(".swiper--thumb");
     let swiperThumb = new Swiper($swiperThumb, {
       autoplay: {
@@ -104,20 +104,20 @@ export default {
     swiperThumb.controller.control = swiperTitle;
 
     // swiper 위치 초기화
-    swiperThumb.autoplay.stop();    
-    
+    swiperThumb.autoplay.stop();
+
     $.scrollAction({
-        $target: $wrap,
-        top: 100,
-        scrollDownAction : function(){          
-            // 스크롤 DOWN 액션
-            swiperThumb.autoplay.start();
-        },
-        scrollUpAction : function(){          
-            // 스크롤 UP 액션
-            swiperThumb.slideTo($($swiperThumb).find('.swiper-slide[data-swiper-slide-index="0"]').index(), 0, false);
-            swiperThumb.autoplay.stop();
-        }
+      $target: $wrap,
+      top: 100,
+      scrollDownAction: function () {
+        // 스크롤 DOWN 액션
+        swiperThumb.autoplay.start();
+      },
+      scrollUpAction: function () {
+        // 스크롤 UP 액션
+        swiperThumb.slideTo($($swiperThumb).find('.swiper-slide[data-swiper-slide-index="0"]').index(), 0, false);
+        swiperThumb.autoplay.stop();
+      },
     });
   },
 };

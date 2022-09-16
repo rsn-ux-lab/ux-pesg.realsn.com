@@ -4,9 +4,18 @@
       <div class="modal-wrapper">
         <header class="modal-header">
           <button class="modal-header__icon-close" title="창닫기" type="button" @click="isShow = false"><i class="icon-close"></i></button>
-          <h1 class="modal-header__title clamp-1">동영상 제목</h1>
+          <h1 class="modal-header__title clamp-1">{{ this.datas.title }}</h1>
         </header>
-        <main class="modal-body">youtube 링크</main>
+        <main class="modal-body">
+          <iframe
+            v-if="this.datas.type === 'youtube'"
+            class="youtube"
+            :src="'https://www.youtube.com/embed/' + this.datas.url + '?autoplay=1&vq=hd1080&rel=0&playsinline=1'"
+            frameborder="0"
+            allow="playsinline; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen=""
+          ></iframe>
+        </main>
       </div>
       <i class="modal-dimmed" aria-hidden="true" @click="isShow = false"></i>
     </article>
@@ -28,8 +37,11 @@ export default {
     },
   },
   created() {
-    // Modal Active
-    eventBus.player.$on("isShow", (_isShow) => (this.isShow = _isShow));
+    // Modal Active & Datas
+    eventBus.modalPlayer.$on("isShow", (_isShow) => (this.isShow = _isShow));
+    eventBus.modalPlayer.$on("inBountData", (_datas) => {
+      this.datas = _datas;
+    });
 
     // ESC 창닫기
     window.addEventListener(
@@ -59,16 +71,35 @@ export default {
 <style lang="scss" scoped>
 .modal {
   $p: &;
+
   &-wrapper {
     overflow: hidden;
-    min-width: 50rem;
-    min-height: 20rem;
     border-radius: 2rem;
   }
   &-body {
-    max-height: 70vh;
+    position: relative;
     margin: 2rem 0 2rem 2rem;
     padding-right: 2rem;
+    &:empty {
+      width: 40rem;
+      height: 20rem;
+      margin: 2rem;
+      padding-right: 0;
+      &::after {
+        content: "URL 또는 Type 설정을 다시하세요";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-weight: bold;
+        color: #ccc;
+        white-space: nowrap;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .youtube {
+      width: 91.4rem;
+      height: 51.4rem;
+    }
   }
   &-header {
     display: flex;

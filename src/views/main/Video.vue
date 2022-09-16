@@ -1,23 +1,23 @@
 <template>
   <section class="video">
     <div class="inner">
-      <div class="example-modal-window">
-        <p>버튼을 누르면 모달 대화 상자가 열립니다.</p>
-        <button @click="isShow('true')" class="btn btn-round btn-round--xlg">열기</button>
-        <!-- 컴포넌트 MyModal -->
-      </div>
+      <ButtonPlayer :url="'https://www.youtube.com/watch?v=mkggXE5e2yk&t=71s'" :type="'youtube'" :title="'동영상 제목을 넣어주세요'"></ButtonPlayer>
     </div>
   </section>
 </template>
 
 <script>
-import * as eventBus from "@/eventBus.js";
+import ButtonPlayer from "../../components/buttons/ButtonPlayer.vue";
 
 export default {
-  methods: {
-    isShow(_isShow) {
-      eventBus.player.$emit("isShow", _isShow);
-    },
+  components: {
+    ButtonPlayer,
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.video {
+  padding: 16rem 0;
+}
+</style>

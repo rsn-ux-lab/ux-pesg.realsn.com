@@ -4,8 +4,9 @@
     <transition name="container">
       <router-view />
     </transition>
+    <ButtonTop></ButtonTop>
     <Footer></Footer>
-    <Player></Player>
+    <ModalPlayer></ModalPlayer>
     <PopupTerms></PopupTerms>
     <PopupPersonal></PopupPersonal>
     <PopuprRefusal></PopuprRefusal>
@@ -15,20 +16,22 @@
 <script>
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import Player from "./components/modal/Player.vue";
+import ModalPlayer from "./components/modal/ModalPlayer.vue";
 import PopupTerms from "./views/common/PopupTerms.vue";
 import PopupPersonal from "./views/common/PopupPersonal.vue";
 import PopuprRefusal from "./views/common/PopuprRefusal.vue";
+import ButtonTop from "./components/buttons/ButtonTop.vue";
 
 export default {
   name: "wrap",
   components: {
     Header,
     Footer,
-    Player,
+    ModalPlayer,
     PopupTerms,
     PopupPersonal,
     PopuprRefusal,
+    ButtonTop,
   },
   data() {
     return {
@@ -43,7 +46,7 @@ export default {
   methods: {
     /* 페이지 공통 기능 호출 */
     onCommonJs() {
-      (function () {
+      {
         /**
          *
          *  Device 체크 (custom data attributes)
@@ -54,11 +57,11 @@ export default {
         let detail = $.getDevice().detail;
 
         $wrap.wait(100).attr("data-device-detail", detail);
-      })();
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
-      (function () {
+      {
         /**
          *
          *   파라미터 값으로 화면 스크롤 이동
@@ -74,11 +77,11 @@ export default {
         setTimeout(() => {
           $.moveToParams();
         }, 1000);
-      })();
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
-      (function () {
+      {
         /**
          *
          * 더블탭(확대기능) 방지
@@ -86,22 +89,22 @@ export default {
          */
 
         $.disabledDoubleTab();
-      })();
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
-      (function () {
+      {
         /**
          *
          * .SVG to XML 변환
          *
          */
         $('img[src*=".svg"]').makeSvg();
-      })();
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
-      (function () {
+      {
         /**
          *
          * wrapper is ready
@@ -115,22 +118,22 @@ export default {
           opacity: 1,
           visibility: "visible",
         });
-      })();
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
-      (function () {
+      {
         /**
          *
          * 스크롤 이동
          *
          */
         $(".js-anchor").anchor();
-      })();
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
-      (function () {
+      {
         /**
          *
          * form 요소 인러랙션 일괄 적용
@@ -139,11 +142,11 @@ export default {
         let $wrap = $("#wrap");
 
         $wrap.formTamplate();
-      })();
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
-      (function () {
+      {
         /**
          *
          *.js-is-appear에 FadeIn 적용 ▼
@@ -188,11 +191,11 @@ export default {
             },
           });
         });
-      })();
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
-      (function () {
+      {
         /**
          *
          * TEXT 말줄임
@@ -201,11 +204,11 @@ export default {
         $(".js-clamp-1").clamp(1);
         $(".js-clamp-2").clamp(2);
         $(".js-clamp-3").clamp(3);
-      })();
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
-      (function () {
+      {
         /**
          *
          * 데이터 불러오는 동안 대기상태 표시
@@ -219,58 +222,13 @@ export default {
          */
 
         $("[data-loding-spinner]").lodingSpinner();
-      })();
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
-      (function () {
-        /**
-         *
-         * 맨 위로가기 버튼 추가
-         *
-         */
-
-        let winH = window.innerHeight;
-        let wrapH = $("#wrap").outerHeight();
-        let $container = $("#container");
-        let $btnTop;
-
-        // windows 높이 보다 documnet가 1.5배 크면 "TOP Button" Node 추가
-        if (winH * 1.5 < wrapH) {
-          $btnTop = $(`
-            <aside id="aisdeBtnTop">
-                <button class="btn btn-top js-anchor" data-anchor="#wrap" type="button"><span>TOP</span></button>
-            </aside>`);
-
-          $container.append($btnTop); // 버튼 추가
-          isActive(); // 버튼 활성, 비활성화
-          $btnTop.find(".js-anchor").anchor(); // 버튼 클릭시 스크롤 이동
-        }
-
-        // windows 1/3 이상 스크롤 이동시 "TOP Button" 노출-
-        let status;
-        function isActive() {
-          $(window).on("scroll", function () {
-            let winT = $(this).scrollTop();
-
-            if (winH / 3 < winT) {
-              if (!status) $btnTop.addClass("is-active");
-              status = true;
-            } else {
-              if (status) $btnTop.removeClass("is-active");
-              status = false;
-            }
-          });
-        }
-
-        // 3초 동안 스크롤 움직임이 없으면 "TOP Button" 감추기
-        setInterval(function () {
-          if (status) {
-            $btnTop.removeClass("is-active");
-            status = false;
-          }
-        }, 3000);
-      })();
+      {
+        //
+      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */

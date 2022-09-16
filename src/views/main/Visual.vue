@@ -1,17 +1,20 @@
 <template>
-  <section class="visual js-is-appear">
-    <div class="inner">
-      <VisualText />
-      <VisualThumb />
-    </div>
-    <!-- <div class="test" :style="{ 'background-image': 'url(' + require('@/assets/images/main/visua_bg_object.png') + ')' }"></div> -->
-  </section>
+  <transition name="visual" appear>
+    <section class="visual js-is-appear">
+      <div class="inner">
+        <VisualText></VisualText>
+        <VisualThumb></VisualThumb>
+      </div>
+      <!-- <div class="test" :style="{ 'background-image': 'url(' + require('@/assets/images/main/visua_bg_object.png') + ')' }"></div> -->
+    </section>
+  </transition>
 </template>
 
 <script>
 import VisualText from "./VisualText.vue";
 import VisualThumb from "./VisualThumb.vue";
 export default {
+  name: "visual",
   components: {
     VisualText,
     VisualThumb,
@@ -20,8 +23,7 @@ export default {
     //
   },
   beforeEnter(el) {
-    // ...
-    console.log(el);
+    //
   },
   mounted() {
     document.querySelector("#container").classList.remove("is-active");
@@ -34,6 +36,8 @@ export default {
 /* visual */
 
 .visual {
+  $v: &;
+
   overflow: hidden;
   position: relative;
   height: 82.6rem;
@@ -46,8 +50,8 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("~@/assets/images/main/visua_bg_object.png") 30% 58% no-repeat;
-    background-size: auto 230%;
+    background: url("~@/assets/images/main/visua_bg.png") center center no-repeat;
+    background-size: auto 100%;
   }
   .test {
     position: absolute;
@@ -57,6 +61,19 @@ export default {
     height: 300px;
     border: 10px solid red;
     z-index: 10;
+  }
+  &-enter-active,
+  &-leave-active {
+    transition-delay: 4s;
+    #{$v}-thumb {
+      @include transition($tgs: transform, $delay: $G-container-delay + 0.5);
+    }
+  }
+  &-enter,
+  &-leave-to {
+    #{$v}-thumb {
+      transform: translate(50.5rem, -50%);
+    }
   }
 }
 </style>

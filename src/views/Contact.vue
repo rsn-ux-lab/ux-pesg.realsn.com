@@ -4,6 +4,17 @@
   </main>
 </template>
 
-<script></script>
+<script>
+export default {
+  mounted() {
+    const $footer = document.querySelector("#footer");
 
-<style></style>
+    window.fitContainer({
+      $target: this.$el,
+      excepts: [$footer],
+    });
+  },
+};
+</script>
+
+<style scoped lang="scss"></style>
