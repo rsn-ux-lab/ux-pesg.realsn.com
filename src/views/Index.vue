@@ -10,6 +10,9 @@
           P.ESG는 기업 ESG에 대한 우리 사회의 반응에 측정하여<br />
           기업 ESG 활동의 목적이 소비자 인식 효과에 있음을 나타내고자 합니다.
         </p>
+        <button class="gallery-button">
+          <img class="gallery-button__thumb" src="" alt="" />
+        </button>
       </div>
     </section>
   </main>
