@@ -1,6 +1,6 @@
 <template>
   <transition name="visual-thumb" appear>
-    <div class="visual-thumb"></div>
+    <div class="visual-thumb" :style="{ backgroundImage: `url(${require('@/assets/images/main/visual_thumb.jpg')})` }"></div>
   </transition>
 </template>
 
@@ -22,7 +22,9 @@ export default {
     border: 0.1rem solid #fff;
     border-radius: 2rem;
     background-color: rgba(#fff, 0.3);
+    background-size: cover;
     transform: translate(39.5rem, -50%);
+    box-shadow: $G-box-shadow;
   }
 }
 </style>
