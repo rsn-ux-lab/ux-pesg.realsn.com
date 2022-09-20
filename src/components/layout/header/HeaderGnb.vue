@@ -9,32 +9,7 @@
 
 <script>
 export default {
-  mounted() {
-    /**
-     *
-     * GNB Active
-     *
-     */
-
-    const $linkGnbs = document.querySelectorAll(".header-gnb__link");
-    const links = [...$linkGnbs].map((_el) => _el.getAttribute("href"));
-
-    $linkGnbs.forEach((_each) => {
-      _each.addEventListener("click", function () {
-        addClass();
-      });
-    });
-
-    function addClass() {
-      const path = location.pathname;
-      const idx = links.indexOf(path);
-
-      if (idx !== -1) {
-        $linkGnbs[idx].classList.add("is-active");
-      }
-    }
-    addClass();
-  },
+  name: "header-gnb",
 };
 </script>
 
@@ -47,7 +22,7 @@ export default {
     font-family: "Jost";
     font-size: 1.8rem;
     &:hover,
-    &.is-active {
+    &.router-link-active {
       color: $G-color-primary;
     }
   }

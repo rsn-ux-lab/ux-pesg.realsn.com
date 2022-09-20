@@ -6,7 +6,7 @@
     </SectionSubTitle>
     <SectionOnethumbnail :thumb="require('@/assets/images/index/Infographics_thumb/thumb1.jpg')">
       <template slot="title">우리는 Web에서 빅데이터를 모아<br />기업 ESG 노출 활동을 분석하는 새로운 Index를 개발했습니다.</template>
-      <template slot="desc">P.ESG는 웹 상의 기업 ESG 이슈를 자동수집, 딥러닝 AI로 ESG를 분류하고 평가합니다.</template>
+      <template slot="description">P.ESG는 웹 상의 기업 ESG 이슈를 자동수집, 딥러닝 AI로 ESG를 분류하고 평가합니다.</template>
     </SectionOnethumbnail>
     <SwiperGraph></SwiperGraph>
     <Analysis></Analysis>

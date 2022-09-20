@@ -4,8 +4,8 @@
     <h1>{{ modal }}</h1> -->
     <div class="inner">
       <LinkLogo></LinkLogo>
-      <HeaderGnb />
-      <HeaderUtill />
+      <HeaderGnb></HeaderGnb>
+      <HeaderUtill></HeaderUtill>
     </div>
   </header>
 </template>

@@ -1,12 +1,12 @@
 <template>
-  <section class="one-thumbnail">
+  <section class="one-thumbnail l-section">
     <div class="inner">
-      <header class="one-thumbnail-header">
-        <h3 class="one-thumbnail-header__title">
+      <header class="one-thumbnail-header" v-if="this.$slots['title']">
+        <h3 class="l-section__title">
           <slot name="title">section 제목을 입력하세요</slot>
         </h3>
-        <p class="one-thumbnail-header__description">
-          <slot name="desc">section 설명을 입력하세요</slot>
+        <p class="l-section__description" v-if="this.$slots['description']">
+          <slot name="description">section 설명을 입력하세요</slot>
         </p>
       </header>
       <main class="one-thumbnail-body">
@@ -14,6 +14,11 @@
           <img class="one-thumbnail-box__thumb" :src="this.$attrs.thumb" alt="" />
         </div>
       </main>
+      <footer class="one-thumbnail-footer">
+        <div class="one-thumbnail-btn-area" v-if="this.$slots['button']">
+          <slot name="button">버튼을 추가하세요</slot>
+        </div>
+      </footer>
     </div>
   </section>
 </template>
@@ -28,29 +33,13 @@ export default {
 .one-thumbnail {
   $g: &;
 
-  padding: 10rem 0;
-  &-header {
-    &__title {
-      font-size: 3.5rem;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    &__description {
-      margin-bottom: 5.8rem;
-      font-size: 2rem;
-      color: #514888;
-      text-align: center;
-      font-weight: 500;
-    }
-  }
   &-body {
     #{$g}-box {
       overflow: hidden;
       position: relative;
       display: block;
       width: 108rem;
-      height: 56rem;
+      min-height: 56rem;
       margin: 0 auto;
       border-radius: $G-box-radius;
       box-shadow: $G-box-shadow;
@@ -58,6 +47,12 @@ export default {
         width: 100%;
         height: auto;
       }
+    }
+  }
+  &-footer {
+    #{$g}-btn-area {
+      padding-top: 7rem;
+      text-align: center;
     }
   }
 }

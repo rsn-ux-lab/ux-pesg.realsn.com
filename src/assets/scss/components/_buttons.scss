@@ -79,6 +79,8 @@ $btnStates: (
 
 /* btn-round */
 @mixin btnRound {
+  position: relative;
+  z-index: 1;
   height: fz-in-em(44, $G-font-size);
   padding: 0 fz-in-em(30, $G-font-size);
   font-size: $G-font-size;
@@ -113,6 +115,39 @@ $btnStates: (
 // default
 .btn-round {
   @include btnRound;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    z-index: -1;
+
+    @include transition;
+  }
+  &:hover {
+    &::after {
+      right: 0;
+    }
+    &::before {
+      @include transition($time: 0.25);
+    }
+  }
+  &--white {
+    color: $G-color-primary;
+    background-color: #fff;
+    &::after {
+      background: $G-grad-primary;
+    }
+    &::before {
+      border: 0.2rem solid $G-color-primary;
+    }
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 // border
