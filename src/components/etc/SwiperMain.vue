@@ -25,8 +25,6 @@
 </template>
 
 <script>
-import swiper from "../../assets/js/libs/swiper/swiper";
-
 export default {
   name: "swiper-main",
   props: {
@@ -37,7 +35,6 @@ export default {
   },
   data() {
     return {
-      //
       datas: {
         allData: JSON.parse(JSON.stringify(this.inBoundData)),
         get title() {

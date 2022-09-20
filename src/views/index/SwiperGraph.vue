@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import swiper from "../../assets/js/libs/swiper/swiper";
-
 export default {
   name: "graph-swiper",
   data() {
