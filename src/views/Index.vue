@@ -15,7 +15,7 @@
 
 <script>
 import SectionSubTitle from "../components/etc/SectionSubTitle.vue";
-import SectionOnethumbnail from "../components/etc/sectionOnethumbnail.vue";
+import SectionOnethumbnail from "../components/etc/SectionOnethumbnail.vue";
 import SwiperGraph from "./index/SwiperGraph.vue";
 import Analysis from "./index/Analysis.vue";
 

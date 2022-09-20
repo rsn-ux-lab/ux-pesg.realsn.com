@@ -46,7 +46,7 @@
 
 <script>
 import SectionSubTitle from "../components/etc/SectionSubTitle.vue";
-import SectionOnethumbnail from "../components/etc/sectionOnethumbnail.vue";
+import SectionOnethumbnail from "../components/etc/SectionOnethumbnail.vue";
 import Service from "./dashboard/Service.vue";
 
 export default {
