@@ -1,6 +1,6 @@
 <template>
   <main id="container" role="main">
-    <h1>contact</h1>
+    <h2 class="visually-hidden">contact</h2>
   </main>
 </template>
 

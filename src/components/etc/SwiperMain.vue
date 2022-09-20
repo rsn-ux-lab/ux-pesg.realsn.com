@@ -28,6 +28,7 @@
 import swiper from "../../assets/js/libs/swiper/swiper";
 
 export default {
+  name: "swiper-main",
   props: {
     inBoundData: {
       type: Array,
@@ -37,88 +38,94 @@ export default {
   data() {
     return {
       //
+      datas: {
+        allData: JSON.parse(JSON.stringify(this.inBoundData)),
+        get title() {
+          return this.allData.map((_arr) => _arr.title);
+        },
+        get img() {
+          return this.allData.map((_arr) => _arr.img);
+        },
+      },
     };
   },
-  created() {
-    /* JSON 데이터 변환 */
-    this.datas = JSON.parse(JSON.stringify(this.inBoundData));
-
-    /* 데이터 추출 */
-    this.datas.title = this.datas.map((_arr) => _arr.title);
-    this.datas.img = this.datas.map((_arr) => _arr.img);
-  },
   mounted() {
-    const $wrap = this.$el;
+    this.appendSwiper();
+    this.resetSwiper();
+  },
+  methods: {
+    appendSwiper() {
+      /* swiper - title */
+      const $swiperTitle = this.$el.querySelector(".swiper--title");
+      this.swiperTitle = new Swiper($swiperTitle, {
+        slidesPerView: 1,
+        loop: true,
+        loopedSlides: $swiperTitle.querySelectorAll(".swiper-slide").length,
+        effect: "fade",
+      });
 
-    /* swiper - title */
-    const $swiperTitle = $wrap.querySelector(".swiper--title");
-    let swiperTitle = new Swiper($swiperTitle, {
-      slidesPerView: 1,
-      loop: true,
-      loopedSlides: $swiperTitle.querySelectorAll(".swiper-slide").length,
-      effect: "fade",
-    });
-
-    /* swiper - thumb */
-    const $swiperThumb = $wrap.querySelector(".swiper--thumb");
-    let swiperThumb = new Swiper($swiperThumb, {
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      speed: 1000,
-      slidesPerView: 1,
-      loop: true,
-      loopedSlides: $swiperThumb.querySelectorAll(".swiper-slide").length,
-      lazy: true,
-      lazy: {
-        loadPrevNext: false,
-        loadOnTransitionStart: true,
-      },
-      grabCursor: true,
-      effect: "creative",
-      creativeEffect: {
-        prev: {
-          shadow: true,
-          translate: ["-20%", 0, -1],
+      /* swiper - thumb */
+      const $swiperThumb = this.$el.querySelector(".swiper--thumb");
+      this.swiperThumb = new Swiper($swiperThumb, {
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
         },
-        next: {
-          translate: ["100%", 0, 0],
+        speed: 1000,
+        slidesPerView: 1,
+        loop: true,
+        loopedSlides: $swiperThumb.querySelectorAll(".swiper-slide").length,
+        lazy: true,
+        lazy: {
+          loadPrevNext: false,
+          loadOnTransitionStart: true,
         },
-      },
-      navigation: {
-        nextEl: $wrap.querySelector(".swiper-button-next"),
-        prevEl: $wrap.querySelector(".swiper-button-prev"),
-      },
-      pagination: {
-        el: $wrap.querySelector(".swiper-pagination"),
-        clickable: true,
-        renderBullet: function (index, className) {
-          return '<span class="' + className + '">' + (index + 1) + "</span>";
+        grabCursor: true,
+        effect: "creative",
+        creativeEffect: {
+          prev: {
+            shadow: true,
+            translate: ["-20%", 0, -1],
+          },
+          next: {
+            translate: ["100%", 0, 0],
+          },
         },
-      },
-    });
+        navigation: {
+          nextEl: this.$el.querySelector(".swiper-button-next"),
+          prevEl: this.$el.querySelector(".swiper-button-prev"),
+        },
+        pagination: {
+          el: this.$el.querySelector(".swiper-pagination"),
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + "</span>";
+          },
+        },
+      });
 
-    // swiper control 동기화
-    swiperTitle.controller.control = swiperThumb;
-    swiperThumb.controller.control = swiperTitle;
+      // swiper control 동기화
+      this.swiperTitle.controller.control = this.swiperThumb;
+      this.swiperThumb.controller.control = this.swiperTitle;
+    },
+    resetSwiper() {
+      // swiper 위치 초기화
+      this.swiperThumb.autoplay.stop();
 
-    // swiper 위치 초기화
-    swiperThumb.autoplay.stop();
-
-    $.scrollAction({
-      $target: $wrap,
-      top: 100,
-      scrollDownAction: function () {
-        // 스크롤 DOWN 액션
-        swiperThumb.autoplay.start();
-      },
-      scrollUpAction: function () {
-        // 스크롤 UP 액션
-        swiperThumb.slideTo($($swiperThumb).find('.swiper-slide[data-swiper-slide-index="0"]').index(), 0, false);
-        swiperThumb.autoplay.stop();
-      },
-    });
+      $.scrollAction({
+        $target: this.$el,
+        top: 100,
+        scrollDownAction: () => {
+          // 스크롤 DOWN 액션
+          this.swiperThumb.autoplay.start();
+        },
+        scrollUpAction: () => {
+          // 스크롤 UP 액션
+          this.swiperThumb.slideTo(0, 0, false);
+          this.swiperThumb.autoplay.stop();
+        },
+      });
+    },
   },
 };
 </script>

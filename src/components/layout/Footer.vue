@@ -4,7 +4,7 @@
     <div class="footer-inner">
       <div class="inner">
         <div class="about">
-          <linkLogo></linkLogo>
+          <LinkLogo></LinkLogo>
           <div class="about-list">
             <a class="about-list__link" @click="isShow('popupTerms')">서비스 이용약관</a>
             <a class="about-list__link" @click="isShow('popupPersonal')">개인정보 처리방침</a>
@@ -28,11 +28,11 @@
 
 <script>
 import * as eventBus from "@/eventBus.js";
-import linkLogo from "../buttons/linkLogo.vue";
+import LinkLogo from "../buttons/LinkLogo.vue";
 
 export default {
   components: {
-    linkLogo,
+    LinkLogo,
   },
   data() {
     return {

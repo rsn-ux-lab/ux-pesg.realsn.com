@@ -1,5 +1,6 @@
 <template>
   <main id="container" role="main">
+    <h2 class="visually-hidden">main</h2>
     <Visual></Visual>
     <Score></Score>
     <Compare></Compare>

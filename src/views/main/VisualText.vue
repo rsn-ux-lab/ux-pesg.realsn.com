@@ -1,10 +1,10 @@
 <template>
   <div class="visual-text">
-    <h2 class="visual-text__title">
+    <h3 class="visual-text__title">
       <span class="ff-Jost">P.ESG</span>로 우리 기업의<br />
       <span class="ff-Jost">ESG</span> 가치를 바로 확인하세요
-    </h2>
-    <p class="visual-text__desc">
+    </h3>
+    <p class="visual-text__description">
       <span class="ff-Jost">P.ESG</span>는 웹을 통해 공중<span class="ff-Jost">(Public)</span> 반응데이터를 실시간 수집하여<br />
       기업의 <span class="ff-Jost">ESG</span> 역량<span class="ff-Jost">(Performance)</span>를 감지<span class="ff-Jost">(Perceive)</span>하고 평가하는
       <span class="ff-Jost">Index</span>입니다.
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import LinkJoin from "../../components/buttons/linkJoin.vue";
+import LinkJoin from "../../components/buttons/LinkJoin.vue";
 
 export default {
   name: "visual-text",
@@ -39,7 +39,7 @@ export default {
     font-weight: 700;
     letter-spacing: -0.035em;
   }
-  &__desc {
+  &__description {
     margin-bottom: 11rem;
     font-size: 2rem;
     font-weight: 500;

@@ -1,5 +1,6 @@
 <template>
   <main id="container" role="main">
+    <h2 class="visually-hidden">insight</h2>
     <SectionSubTitle :style="{ backgroundImage: `url(${require('@/assets/images/insight/sub-title_bg.jpg')})` }">
       <template slot="title">P.ESG Insight</template>
     </SectionSubTitle>

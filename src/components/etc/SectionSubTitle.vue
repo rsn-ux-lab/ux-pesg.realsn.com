@@ -1,9 +1,9 @@
 <template>
   <section class="sub-title">
     <div class="inner">
-      <h2 class="sub-title__title">
+      <h3 class="sub-title__title">
         <slot name="title">서브제목 입력하세요</slot>
-      </h2>
+      </h3>
     </div>
     <i class="sub-title__bg sub-title__bg--left" aria-hidden="true"></i>
     <i class="sub-title__bg sub-title__bg--right" aria-hidden="true"></i>

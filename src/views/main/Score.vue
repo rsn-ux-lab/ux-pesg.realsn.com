@@ -14,7 +14,7 @@
 <script>
 import ScoreText from "./ScoreText.vue";
 import SwiperMain from "../../components/etc/SwiperMain.vue";
-import LinkJoin from "../../components/buttons/linkJoin.vue";
+import LinkJoin from "../../components/buttons/LinkJoin.vue";
 
 export default {
   name: "score",

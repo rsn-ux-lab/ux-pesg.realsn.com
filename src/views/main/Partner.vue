@@ -1,7 +1,7 @@
 <template>
   <section class="partner">
     <div class="inner">
-      <h2 class="partner__title"><span class="ff-Jost">P.ESG</span>에 등록된 코스피/코스닥 상장기업</h2>
+      <h3 class="partner__title"><span class="ff-Jost">P.ESG</span>에 등록된 코스피/코스닥 상장기업</h3>
       <ul class="partner-list">
         <li class="partner-list__item"><img class="partner-list__logo" src="@/assets/images/main/partner_logo/graylog.png" alt="graylog" /></li>
         <li class="partner-list__item"><img class="partner-list__logo" src="@/assets/images/main/partner_logo/segment.png" alt="segment" /></li>

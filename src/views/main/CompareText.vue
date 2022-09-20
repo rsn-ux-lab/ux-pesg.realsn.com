@@ -1,6 +1,6 @@
 <template>
   <div class="compare-text">
-    <p class="compare-text__desc">
+    <p class="compare-text__description">
       산업내 우리 기업의<br />
       <span class="ff-Jost">P.ESG</span> 현주소를<br />
       시계열 차트 비교로<br />
@@ -19,7 +19,7 @@ export default {};
   top: 0;
   left: 0;
   padding-top: 9rem;
-  &__desc {
+  &__description {
     font-size: 5.5rem;
     font-weight: bold;
     line-height: 1.3em;

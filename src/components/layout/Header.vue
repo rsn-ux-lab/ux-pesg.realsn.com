@@ -3,7 +3,7 @@
     <!-- <button @click="passEvent" class="btn btn-round">test</button>
     <h1>{{ modal }}</h1> -->
     <div class="inner">
-      <link-logo></link-logo>
+      <LinkLogo></LinkLogo>
       <HeaderGnb />
       <HeaderUtill />
     </div>
@@ -30,7 +30,7 @@
     flex-wrap: nowrap;
     align-items: center;
   }
-  .logo {
+  .link-logo {
     display: inline-flex;
     justify-content: flex-start;
     flex-basis: 22rem;
@@ -39,13 +39,13 @@
 </style>
 
 <script>
-import linkLogo from "../buttons/linkLogo.vue";
+import LinkLogo from "../buttons/LinkLogo.vue";
 import HeaderGnb from "./header/HeaderGnb.vue";
 import HeaderUtill from "./header/HeaderUtill.vue";
 
 export default {
   components: {
-    linkLogo,
+    LinkLogo,
     HeaderGnb,
     HeaderUtill,
   },
