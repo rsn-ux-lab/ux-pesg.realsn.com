@@ -118,7 +118,7 @@ export default {
           .spec-list {
             &__item {
               &::after {
-                background-image: svgIcon(check, rgba($G-color-primary, 0));
+                background-image: svgIcon(check, 4d34ef);
               }
             }
           }
@@ -131,7 +131,7 @@ export default {
           .spec-list {
             &__item {
               &::after {
-                background-image: svgIcon(check, rgba($G-color-active, 0));
+                background-image: svgIcon(check, 6f00e4);
               }
             }
           }

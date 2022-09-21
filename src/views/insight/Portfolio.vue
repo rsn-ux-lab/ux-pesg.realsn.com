@@ -86,7 +86,7 @@ export default {
 
       this.swiper = new Swiper($swiper, {
         allowTouchMove: false,
-        // autoHeight: true,
+        autoHeight: true,
         effect: "fade",
         pagination: {
           el: this.$el.querySelector(".swiper-pagination"),
@@ -97,6 +97,12 @@ export default {
         },
       });
     },
+
+    /**
+     *
+     * 대체이미지 설정
+     *
+     */
     onError(e) {
       e.target.src = require("@/assets/images/insight/onerror_portfolio_thumb.jpg");
     },
@@ -160,6 +166,7 @@ export default {
           line-height: 1em;
         }
         .desc {
+          height: 8rem;
           font-size: 2.5rem;
           font-weight: 500;
           color: #808080;
@@ -244,6 +251,17 @@ export default {
   }
   &-slide {
     opacity: 0;
+    &-active:empty {
+      &::after {
+        content: "데이터가 없습니다.";
+        display: block;
+        padding: 20rem 0 15rem;
+        text-align: center;
+        font-size: 4rem;
+        font-weight: bold;
+        color: #ccc;
+      }
+    }
   }
 }
 </style>
