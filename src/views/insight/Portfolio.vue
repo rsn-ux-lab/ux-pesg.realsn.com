@@ -87,7 +87,7 @@ export default {
       });
     },
     onError(e) {
-      e.target.src = require("@/assets/images/insight/onerror_portfolio_thumb.png");
+      e.target.src = require("@/assets/images/insight/onerror_portfolio_thumb.jpg");
     },
   },
 };
