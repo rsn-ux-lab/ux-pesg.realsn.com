@@ -470,11 +470,7 @@ hr {
 .clamp {
   @for $i from 0 through 10 {
     &#{"-" + $i} {
-      @if $i == 1 {
-        white-space: nowrap !important;
-      } @else {
-        white-space: normal !important;
-      }
+      white-space: normal !important;
       display: -webkit-box !important;
       -webkit-line-clamp: $i !important;
       -webkit-box-orient: vertical !important;

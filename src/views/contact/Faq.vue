@@ -20,7 +20,6 @@
 
 <script>
 import axios from "axios";
-import { stat } from "fs";
 
 export default {
   name: "faq",
@@ -127,7 +126,6 @@ export default {
     }
     &-wrapper {
       overflow: hidden;
-      // height: $headerH;
       background-color: #fff;
       border-radius: $G-box-radius;
     }

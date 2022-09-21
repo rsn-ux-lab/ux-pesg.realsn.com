@@ -106,7 +106,7 @@ $btnStates: (
     font-size: $lg-font-size;
   }
   &--is-shadow {
-    box-shadow: $G-btn-shadow;
+    box-shadow: $G-button-shadow;
   }
 
   @include transition;

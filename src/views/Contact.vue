@@ -13,6 +13,10 @@
     <!-- 주요소식 -->
     <News></News>
     <!-- //주요소식 -->
+
+    <!-- 연락처 안내 -->
+    <Contact></Contact>
+    <!-- //연락처 안내 -->
   </main>
 </template>
 
@@ -20,12 +24,14 @@
 import SendMail from "./contact/SendMail.vue";
 import Faq from "./contact/Faq.vue";
 import News from "./contact/News.vue";
+import Contact from "./contact/Contact.vue";
 
 export default {
   components: {
     SendMail,
     Faq,
     News,
+    Contact,
   },
   mounted() {
     const $footer = document.querySelector("#footer");

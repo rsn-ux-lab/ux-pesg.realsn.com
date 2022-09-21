@@ -3,6 +3,52 @@
     <div class="inner">
       <h3 class="l-section__title">문의사항</h3>
       <p class="l-section__description">P.ESG 관련 문의사항을 남겨주시면 담당 컨설턴트가 빠르게 연락드리겠습니다.</p>
+      <div class="form">
+        <fieldset class="form-fieldset">
+          <h4 class="form-fieldset__title">신청자 정보</h4>
+          <div class="form-row form-text" data-row="이름">
+            <label for="name" class="form-text__label"><span class="txt">이름</span></label>
+            <input id="name" class="form-text__input" type="text" placeholder="이름을 입력하세요" />
+          </div>
+          <div class="form-row form-text" data-row="연락처">
+            <label for="phone" class="form-text__label"><span class="txt">연락처</span></label>
+            <input id="phone" class="form-text__input" type="text" placeholder="예) 010-1234-5678" />
+          </div>
+          <div class="form-row form-text" data-row="기관">
+            <label for="corp" class="form-text__label"><span class="txt">회사 또는 단체명</span></label>
+            <input id="corp" class="form-text__input" type="text" placeholder="회사 또는 단체명 입력" />
+          </div>
+          <div class="form-row form-text" data-row="직책">
+            <label for="position" class="form-text__label"><span class="txt">직책</span></label>
+            <input id="position" class="form-text__input" type="text" placeholder="담당하고 계시는 직책" />
+          </div>
+          <div class="form-row form-text" data-row="이메일">
+            <label for="position" class="form-text__label"><span class="txt">이메일 주소</span></label>
+            <input id="position" class="form-text__input" type="text" placeholder="예) pesg123@prone.com" />
+          </div>
+          <div class="form-row form-text" data-row="산업군">
+            <label for="job" class="form-text__label"><span class="txt">산업군</span></label>
+            <input id="job" class="form-text__input" type="text" placeholder="산업군 선택" />
+          </div>
+          <div class="form-row form-text" data-row="문의사항" style="height: 20rem">
+            <label for="textarea" class="form-text__label"><span class="txt">문의사항</span></label>
+            <textarea id="textarea" class="form-text__input" placeholder="문의사항을 입력해 주세요"></textarea>
+          </div>
+        </fieldset>
+        <fieldset class="form-fieldset">
+          <div class="form-row form-check" data-row="동의">
+            <input id="agreement" class="form-check__input" type="checkbox" />
+            <label for="agreement" class="form-check__label">
+              <span class="txt">
+                [필수] 요청하신 문의 내용에 대한 서비스제공을 위해서 필요한 최소한의 [개인정보]이므로 동의하셔야 서비스를 이용할 수 있습니다.
+              </span>
+            </label>
+          </div>
+        </fieldset>
+        <div class="btn-area text-center">
+          <button class="btn btn-round-grad btn-round-grad--xlg w-40" type="button"><span class="txt">문의하기</span></button>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -14,5 +60,19 @@ export default {};
 <style lang="scss" scoped>
 .send-mail {
   background-color: #f8fafc;
+  .form {
+    padding: 4.5rem 8rem 4.8rem;
+    border-radius: $G-box-radius;
+    background-color: #fff;
+    box-shadow: $G-box-shadow;
+    &-row {
+      height: 8rem;
+      padding-top: 4rem;
+      .form-text__label {
+        position: absolute;
+        top: 1rem;
+      }
+    }
+  }
 }
 </style>

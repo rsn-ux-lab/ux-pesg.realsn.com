@@ -1,0 +1,331 @@
+/* SCSS Document */
+@charset "UTF-8";
+
+/****************************************************************************
+    Forms - 폼 요소
+****************************************************************************/
+/* height size - 매개변수 깁본값은 font-size를 제외하고 px 으로 설정 */
+@mixin formHeightSize($fs: $G-font-size, $small: 48, $default: 68, $large: 82, $xlarge: 92) {
+  & {
+    height: fz-in-em($default, $fs);
+  }
+  &--h-sm {
+    height: fz-in-em($small, $fs);
+  }
+  &--h-lg {
+    height: fz-in-em($large, $fs);
+  }
+  &--h-xlg {
+    height: fz-in-em($xlarge, $fs);
+  }
+}
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
+
+/* .form*/
+.form {
+  position: relative;
+}
+
+/* .form-fieldset */
+.form-fieldset {
+  position: relative;
+}
+
+/* .form-row[data-row] */
+.form-row {
+  position: relative;
+
+  @include formHeightSize;
+}
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
+
+/* input 기본값 */
+.form-text {
+  $f: &;
+
+  font-size: $G-font-size;
+  &__input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 fz-in-em(30, $G-font-size);
+    border: 1px solid #666;
+    border-radius: fz-in-em(8, $G-font-size);
+    background-color: #fff;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    @include transition;
+
+    &:focus {
+      border: 2px solid #333;
+      outline: 0;
+    }
+  }
+}
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
+
+/* search */
+.form-search {
+  $f: &;
+
+  font-size: $G-font-size;
+  &__input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 fz-in-em(80, $G-font-size) 0 fz-in-em(30, $G-font-size);
+    border: 0;
+    border-radius: fz-in-em(8, $G-font-size);
+    background-color: #fff;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    outline: 0;
+  }
+  &__btn-clear {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: fz-in-em(25, $G-font-size);
+    width: fz-in-em(50, $G-font-size);
+    height: fz-in-em(50, $G-font-size);
+    background-image: svgIcon(close, 999);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    transform: translateY(-50%);
+  }
+  &[data-inbound-value] {
+    #{$f}__btn-clear {
+      display: block;
+    }
+    &[data-inbound-value=""] {
+      #{$f}__btn-clear {
+        display: none;
+      }
+    }
+  }
+}
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
+
+/* select */
+.form-select {
+  font-size: $G-font-size;
+  &__select {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 fz-in-em(80, $G-font-size) 0 fz-in-em(30, $G-font-size);
+    border: 1px solid #666;
+    border-radius: fz-in-em(8, $G-font-size);
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    background-image: svgIcon(arrow-down, 333);
+    background-position: right fz-in-em(30, $G-font-size) center;
+    background-repeat: no-repeat;
+    background-size: fz-in-em(14, $G-font-size);
+    &:focus {
+      background-image: svgIcon(arrow-up, 333);
+    }
+  }
+}
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
+
+/* checkbox */
+.form-check {
+  display: inline-flex;
+  font-size: $G-font-size;
+  align-items: center;
+  .form-check__input {
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    border: 1px solid #cdcdcd;
+    border-radius: fz-in-em(4, $G-font-size);
+  }
+  .form-check__input:checked {
+    border: 0;
+    background-color: $G-color-primary;
+    background-image: svgIcon(check, fff);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: fz-in-em(20, $G-font-size);
+  }
+  .form-check__label {
+    position: relative;
+    display: inline-block;
+  }
+  .form-check__input[type="radio"] {
+    border-radius: 100%;
+  }
+}
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
+
+/* checkbox - button */
+.form-check-button {
+  .form-check__input {
+    @include visuallyHidden;
+  }
+  .form-check__label {
+    overflow: hidden;
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 fz-in-em(43, $G-font-size);
+    font-size: $G-font-size;
+    word-break: keep-all;
+    border: 1px solid #666;
+    border-radius: fz-in-em(8, $G-font-size);
+    box-sizing: border-box;
+    outline: none;
+    @include transition;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: fz-in-em(25, $G-font-size);
+      width: fz-in-em(22, $G-font-size);
+      height: fz-in-em(22, $G-font-size);
+      background-image: svgIcon(check, 333);
+      background-position: center;
+      background-size: contain;
+      opacity: 0;
+      transform: translateY(-50%);
+      @include transition;
+    }
+    .txt {
+      line-height: 1em;
+      @include transition;
+    }
+  }
+  .form-check__input:checked + .form-check__label {
+    border-color: transparent;
+    background-color: $G-color-secondary;
+    &::after {
+      opacity: 1;
+    }
+    .txt {
+      transform: translateX(fz-in-em(20, $G-font-size));
+    }
+  }
+
+  // non-width fix
+  &--fluid {
+    .form-check__input:checked + .form-check__label {
+      padding-right: fz-in-em(63, $G-font-size);
+    }
+  }
+}
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
+
+/* checkbox - switches */
+.form-switch {
+  .form-check__input {
+    width: 2em;
+    border: fz-in-em(2, $G-font-size) solid #666;
+    border-radius: 2em;
+    background-image: svgIcon(circle, 666);
+    background-position: left center;
+    background-size: $G-font-size;
+    @include transition($tgs: background-position);
+  }
+  .form-check__input:checked {
+    border: 0;
+    background-image: svgIcon(circle, fff);
+    background-position: right center;
+  }
+}
+
+/* checkbox - switches--lg */
+.form-switch.form-row--lg {
+  $fontSize: px2rem(58);
+
+  font-size: $fontSize;
+  .form-check__input {
+    background-image: svgIcon(check, 666), svgIcon(circle, 666);
+    background-size: $fontSize - 1.5, $fontSize + 1.2;
+    background-position: 25% center, -10% center;
+  }
+  .form-check__input:checked {
+    background-image: svgIcon(check, 000), svgIcon(circle, fff);
+    background-size: $fontSize - 1.5, $fontSize + 1.2;
+    background-position: 75% center, 110% center;
+  }
+}
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
+
+/* calendar */
+.form-calendar {
+  font-size: $G-font-size;
+
+  .form-calendar__input {
+    @include visuallyHidden;
+  }
+  .form-calendar__label {
+    overflow: hidden;
+    display: inline-flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 fz-in-em(28, $G-font-size);
+    font-size: $G-font-size;
+    border: 1px solid #666;
+    border-radius: fz-in-em(8, $G-font-size);
+    box-sizing: border-box;
+    outline: none;
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: fz-in-em(28, $G-font-size);
+      width: fz-in-em(34, $G-font-size);
+      height: fz-in-em(34, $G-font-size);
+      background-image: svgIcon(calendar, 666);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
