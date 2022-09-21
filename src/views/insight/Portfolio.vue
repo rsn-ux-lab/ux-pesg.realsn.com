@@ -1,5 +1,5 @@
 <template>
-  <section class="l-section">
+  <section class="portfolio l-section">
     <div class="inner">
       <h3 class="l-section__title">기업 ESG 소비자와 함께가야 성공합니다</h3>
       <p class="l-section__description">
@@ -12,9 +12,19 @@
       <!-- swiper -->
       <div class="swiper">
         <div class="swiper-wrapper">
-          <section class="swiper-slide" v-for="item in this.categorys">
-            {{ item }}
-            <!-- {{ category.code_name }} -->
+          <section class="swiper-slide" v-for="categorys in datas">
+            <ul class="portfolio-list" v-if="categorys">
+              <li class="portfolio-list__item" v-for="item in categorys">
+                <div class="portfolio-list-thumb">
+                  <img class="thumb" :src="item.imgUrl" @error="onError" alt="" />
+                </div>
+                <div class="portfolio-list-info">
+                  <p class="tag" :data-type="item.ib_type_name">{{ item.ib_type_name }}</p>
+                  <p class="tit clamp-1">{{ item.ib_title }}</p>
+                  <p class="desc clamp-2">{{ item.ib_content }}</p>
+                </div>
+              </li>
+            </ul>
           </section>
         </div>
       </div>
@@ -29,9 +39,8 @@ export default {
   name: "portfolio",
   data() {
     return {
-      allData: null,
-      categorys: null,
-      totals: null,
+      categorys: ["All", "Report", "Case Study", "View"],
+      datas: null,
     };
   },
   created() {
@@ -43,14 +52,15 @@ export default {
   methods: {
     getData(_callback) {
       axios
-        .all([axios.get(`${SERVER.api}/esgSystem/insight/getInsightTypeCode`), axios.post(`${SERVER.api}/esgSystem/insight/getInsightInfo`)])
+        .all([
+          axios.post(`${SERVER.api}/esgSystem/insight/getInsightInfo?ib_type=0`),
+          axios.post(`${SERVER.api}/esgSystem/insight/getInsightInfo?ib_type=1`),
+          axios.post(`${SERVER.api}/esgSystem/insight/getInsightInfo?ib_type=2`),
+          axios.post(`${SERVER.api}/esgSystem/insight/getInsightInfo?ib_type=3`),
+        ])
         .then(
-          axios.spread((res1, res2) => {
-            this.categorys = [...[{ code_name: "all" }], ...res1.data.insightCode];
-            this.totals = res2.data.insightInfo;
-            this.allData = { categorys: this.categorys, totals: this.totals };
-
-            console.log(this.allData);
+          axios.spread((..._response) => {
+            this.datas = _response.map((_arr) => _arr.data.insightInfo);
 
             if (_callback) _callback();
           })
@@ -66,22 +76,102 @@ export default {
       this.swiper = new Swiper($swiper, {
         allowTouchMove: false,
         // autoHeight: true,
-        // effect: "fade",
+        effect: "fade",
         pagination: {
           el: this.$el.querySelector(".swiper-pagination"),
           clickable: true,
           renderBullet: (index, className) => {
-            return `<button class=" ${className} js-anchor" data-anchor=".js-anchor-tab-point" data-category="${this.categorys[index].code_name}" type="button" ><span class="txt">${this.categorys[index].code_name}</span></button>`;
+            return `<button class=" ${className} js-anchor" data-anchor=".js-anchor-tab-point" data-category="${this.categorys[index]}" type="button" ><span class="txt">${this.categorys[index]}</span></button>`;
           },
         },
       });
+    },
+    onError(e) {
+      e.target.src = require("@/assets/images/insight/onerror_portfolio_thumb.png");
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.portfolio {
+  padding-bottom: 5rem;
+  background-color: #f0f4f6;
+  &-list {
+    $list: &;
+
+    padding: 5rem;
+    &__item {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      height: 27rem;
+      margin-bottom: 3rem;
+      padding: 0 3rem;
+      border-radius: $G-box-radius;
+      background-color: #fff;
+      box-shadow: 0 0.2rem 1em rgba(7, 7, 7, 0.08);
+      #{$list}-thumb {
+        margin-right: 3rem;
+        .thumb {
+          width: 31rem;
+          height: 21rem;
+          border-radius: 0.6em;
+        }
+      }
+      #{$list}-info {
+        width: 75rem;
+        .tag {
+          display: inline-flex;
+          align-items: center;
+          height: 3rem;
+          padding: 0 2.4rem;
+          margin-bottom: 1.5rem;
+          border-radius: 2em;
+          font-size: 1.5rem;
+          font-weight: bold;
+          line-height: 1em;
+          color: #fff;
+          background-color: #ccc;
+
+          $types: "Report" #5064ac, "Case Study" #7664df, "View" #4dcdd6;
+
+          @each $type, $color in $types {
+            &[data-type="#{$type}"] {
+              background-color: $color;
+            }
+          }
+        }
+        .tit {
+          margin-bottom: 2.2rem;
+          font-size: 3.3rem;
+          font-weight: bold;
+          line-height: 1em;
+        }
+        .desc {
+          font-size: 2.5rem;
+          font-weight: 500;
+          color: #808080;
+          word-break: keep-all;
+        }
+      }
+      @for $i from 0 through 3 {
+        &:nth-child(#{$i}) {
+          opacity: 0;
+          transform: translateY(-20%);
+
+          .swiper-slide-active & {
+            opacity: 1;
+            transform: translateY(0);
+            @include transition($time: 1, $delay: #{$i * 0.1});
+          }
+        }
+      }
+    }
+  }
+}
 :deep() .swiper {
+  margin: 0 -5rem;
   &-pagination {
     all: unset;
     display: flex;
@@ -134,10 +224,13 @@ export default {
           @include transition($time: 0.25);
         }
       }
-      &[data-category="all"] {
+      &[data-category="All"] {
         display: none;
       }
     }
+  }
+  &-slide {
+    opacity: 0;
   }
 }
 </style>

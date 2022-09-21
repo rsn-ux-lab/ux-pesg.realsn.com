@@ -9,7 +9,7 @@
     <!-- //서브타이틀 -->
 
     <!-- 대시보드 비교 -->
-    <SectionOnethumbnail :thumb="require('@/assets/images/sample_slide/sample3.png')">
+    <SectionOneThumbnail :thumb="require('@/assets/images/sample_slide/sample3.png')">
       <template slot="title">국내 상장기업의 P.ESG 점수를 한눈에 비교하세요 </template>
       <template slot="description">
         대시보드 플랫폼을 통해 주요 코스피 및 코스닥 기업의 과거 및 현재 ESG 데이터를<br />
@@ -21,11 +21,11 @@
           <span class="txt">P.ESG 대시보드 확인하기 </span>
         </a>
       </template>
-    </SectionOnethumbnail>
+    </SectionOneThumbnail>
     <!-- //대시보드 비교 -->
 
     <!-- 리포트 신청 -->
-    <SectionOnethumbnail :thumb="require('@/assets/images/dashboard/report_thumb.jpg')">
+    <SectionOneThumbnail :thumb="require('@/assets/images/dashboard/report_thumb.jpg')">
       <template slot="title">P.ESG 리포트</template>
       <template slot="description">
         기업 맞춤형 P.ESG 분석 데이터를 담은 Web. Report를 제공합니다.<br />특히, 37개 P.ESG 지표를 월 단위로 분석하여 섬세한 SWOT 분석 결과를 제시합니다.
@@ -35,7 +35,7 @@
           <span class="txt">P.ESG 리포트 신청</span>
         </router-link>
       </template>
-    </SectionOnethumbnail>
+    </SectionOneThumbnail>
     <!-- //리포트 신청 -->
 
     <!-- 서비스 이용정책-->
@@ -46,13 +46,13 @@
 
 <script>
 import SectionSubTitle from "../components/etc/SectionSubTitle.vue";
-import SectionOnethumbnail from "../components/etc/SectionOneThumbnail.vue";
+import SectionOneThumbnail from "../components/etc/SectionOneThumbnail.vue";
 import Service from "./dashboard/Service.vue";
 
 export default {
   components: {
     SectionSubTitle,
-    SectionOnethumbnail,
+    SectionOneThumbnail,
     Service,
   },
   mounted() {
