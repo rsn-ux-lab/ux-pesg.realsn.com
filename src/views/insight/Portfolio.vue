@@ -48,8 +48,12 @@ export default {
       this.appendSwiper();
     });
   },
-  mounted() {},
   methods: {
+    /**
+     *
+     * API request
+     *
+     */
     getData(_callback) {
       axios
         .all([
@@ -60,7 +64,9 @@ export default {
         ])
         .then(
           axios.spread((..._response) => {
-            this.datas = _response.map((_arr) => _arr.data.insightInfo);
+            this.datas = _response.map((_list) => {
+              return _list.data.insightInfo.filter((_item) => (_item.imgUrl = SERVER.api + _item.imgUrl));
+            });
 
             if (_callback) _callback();
           })
@@ -69,8 +75,13 @@ export default {
           console.log(_error);
         });
     },
+
+    /**
+     *
+     * swiper 생성
+     *
+     */
     appendSwiper() {
-      /* swiper */
       const $swiper = this.$el.querySelector(".swiper");
 
       this.swiper = new Swiper($swiper, {
@@ -176,6 +187,7 @@ export default {
     all: unset;
     display: flex;
     justify-content: space-between;
+    width: auto !important;
     margin: 0 -0.8rem;
     &-bullet {
       $color: #325cf3;
@@ -190,7 +202,7 @@ export default {
       z-index: 1;
       width: auto;
       height: 9rem;
-      margin: 0 0.8rem;
+      margin: 0 0.8rem !important;
       padding: 0 2.8rem;
       font-size: 2.6rem;
       color: $color;
@@ -216,6 +228,7 @@ export default {
       &:hover,
       &-active {
         color: #fff;
+        box-shadow: 0 0.3rem 1.7rem rgba(46, 43, 176, 0.4);
         &::after {
           right: -10px;
           background: $color;
