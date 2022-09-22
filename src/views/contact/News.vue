@@ -78,6 +78,22 @@ export default {
 .news {
   background-color: #f8fafc;
   &-list {
+    &:empty {
+      &::after {
+        content: "데이터가 없습니다.";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10rem;
+        padding: 0 3.5rem;
+        font-size: 2.3rem;
+        font-weight: bold;
+        color: #ccc;
+        border-radius: $G-box-radius;
+        background-color: #fff;
+        box-shadow: 0 0 0.8rem rgba(7, 7, 7, 0.08);
+      }
+    }
     &__item {
       padding: 1rem 0;
     }

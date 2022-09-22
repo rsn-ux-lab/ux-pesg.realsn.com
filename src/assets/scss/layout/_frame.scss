@@ -16,10 +16,10 @@ body {
     font-size: 8px;
   }
   @include qhd {
-    font-size: 10px;
+    font-size: 9px;
   }
   @include uhd {
-    font-size: 18px;
+    font-size: 13px;
   }
 }
 
