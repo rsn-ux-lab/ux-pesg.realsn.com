@@ -88,7 +88,7 @@ export default {
         });
     },
 
-    getData() {
+    test() {
       axios
         .post(`${SERVER.api}/esgSystem/contact/inquiry/send-mail`, {
           i_name: "",
