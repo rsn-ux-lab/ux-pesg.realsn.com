@@ -64,10 +64,12 @@ export default {
   data() {
     return {
       codes: null,
+      datas: null,
     };
   },
   created() {
     this.getData();
+    this.test();
   },
   methods: {
     /**
@@ -80,6 +82,25 @@ export default {
         .get(`${SERVER.api}/esgSystem/contact/inquiry/getIndustryCode`)
         .then((_response) => {
           this.codes = _response.data.industryCode;
+        })
+        .catch((_error) => {
+          console.log(_error);
+        });
+    },
+
+    getData() {
+      axios
+        .post(`${SERVER.api}/esgSystem/contact/inquiry/send-mail`, {
+          i_name: "",
+          i_phone_nm: "",
+          i_group_name: "",
+          i_position: "",
+          i_email: "",
+          i_industry_name: "",
+          i_content: "",
+        })
+        .then((_response) => {
+          console.log("a");
         })
         .catch((_error) => {
           console.log(_error);
