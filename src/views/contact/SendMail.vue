@@ -54,7 +54,50 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+
+export default {
+  name: "send-mail",
+  data() {
+    return {
+      datas: null,
+    };
+  },
+  created() {
+    this.getData();
+  },
+  methods: {
+    /**
+     *
+     * API request
+     *
+     */
+    getData(_callback) {
+      axios
+        .all([
+          axios.post(`${SERVER.api}/esgSystem/contact/inquiry/send-mail`, {
+            i_name: "a",
+            i_phone_nm: "b",
+            i_group_name: "c",
+            i_position: "d",
+            i_email: "e",
+            i_industry_name: "f",
+            i_content: "g",
+          }),
+        ])
+        .then(
+          axios.spread((..._response) => {
+            console.log(response);
+
+            if (_callback) _callback();
+          })
+        )
+        .catch((_error) => {
+          console.log(_error);
+        });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

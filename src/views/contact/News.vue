@@ -52,7 +52,6 @@ export default {
         .all([axios.post(`${SERVER.api}/esgSystem/contact/news/getMainNewsInfo?pageNum=0`)])
         .then(
           axios.spread((..._response) => {
-            console.log(_response[0]);
             this.option.totalDatas = _response[0].data.newsInfo;
 
             if (_callback) _callback();
