@@ -37,9 +37,9 @@ export default {
     });
   },
   updated() {
-    this.getData(() => {
-      this.setCurrentPage();
-    });
+    // this.getData(() => {
+    //   this.setCurrentPage();
+    // });
   },
   methods: {
     /**
@@ -52,6 +52,7 @@ export default {
         .all([axios.get(`${SERVER.api}/esgSystem/contact/news/getMainNewsInfo`)])
         .then(
           axios.spread((..._response) => {
+            console.log(_response);
             this.option.totalDatas = _response[0].data.newsInfo;
 
             if (_callback) _callback();

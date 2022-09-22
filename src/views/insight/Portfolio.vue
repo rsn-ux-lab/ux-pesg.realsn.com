@@ -190,6 +190,22 @@ export default {
 }
 :deep() .swiper {
   margin: 0 -5rem;
+  &-wrapper {
+    &:empty {
+      &::after {
+        content: "데이터가 없습니다.";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: inherit;
+        height: 30rem;
+        font-size: 3rem;
+        font-weight: bold;
+        color: #ccc;
+        text-align: center;
+      }
+    }
+  }
   &-pagination {
     all: unset;
     display: flex;
