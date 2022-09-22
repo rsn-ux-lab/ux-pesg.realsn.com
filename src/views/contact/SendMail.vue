@@ -4,7 +4,7 @@
       <h3 class="l-section__title">문의사항</h3>
       <p class="l-section__description">P.ESG 관련 문의사항을 남겨주시면 담당 컨설턴트가 빠르게 연락드리겠습니다.</p>
       <div class="form">
-        <fieldset class="form-fieldset">
+        <fieldset class="form-fieldset" data-fieldset="신청자정보">
           <h4 class="form-fieldset__title">신청자 정보</h4>
           <div class="form-row form-text" data-row="이름">
             <label for="name" class="form-text__label"><span class="txt">이름</span></label>
@@ -32,20 +32,20 @@
           </div>
           <div class="form-row form-text" data-row="문의사항" style="height: 20rem">
             <label for="textarea" class="form-text__label"><span class="txt">문의사항</span></label>
-            <textarea id="textarea" class="form-text__input" placeholder="문의사항을 입력해 주세요"></textarea>
+            <textarea id="textarea" class="form-text__textarea" placeholder="문의사항을 입력해 주세요"></textarea>
           </div>
         </fieldset>
-        <fieldset class="form-fieldset">
+        <fieldset class="form-fieldset" data-fieldset="필수동의항목">
           <div class="form-row form-check" data-row="동의">
             <input id="agreement" class="form-check__input" type="checkbox" />
             <label for="agreement" class="form-check__label">
               <span class="txt">
-                [필수] 요청하신 문의 내용에 대한 서비스제공을 위해서 필요한 최소한의 [개인정보]이므로 동의하셔야 서비스를 이용할 수 있습니다.
+                [필수] 요청하신 문의 내용에 대한 서비스제공을 위해서 필요한 최소한의 <strong>[개인정보]</strong>이므로 동의하셔야 서비스를 이용할 수 있습니다.
               </span>
             </label>
           </div>
         </fieldset>
-        <div class="btn-area text-center">
+        <div class="btn-area text-center pt-65">
           <button class="btn btn-round-grad btn-round-grad--xlg w-40" type="button"><span class="txt">문의하기</span></button>
         </div>
       </div>
@@ -60,17 +60,54 @@ export default {};
 <style lang="scss" scoped>
 .send-mail {
   background-color: #f8fafc;
-  .form {
-    padding: 4.5rem 8rem 4.8rem;
-    border-radius: $G-box-radius;
-    background-color: #fff;
-    box-shadow: $G-box-shadow;
-    &-row {
-      height: 8rem;
-      padding-top: 4rem;
-      .form-text__label {
-        position: absolute;
-        top: 1rem;
+}
+.form {
+  $fo: &;
+
+  padding: 4.5rem 8rem 4.8rem;
+  border-radius: $G-box-radius;
+  background-color: #fff;
+  box-shadow: $G-box-shadow;
+  &-fieldset {
+    $fi: &;
+
+    &[data-fieldset="신청자정보"] {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -1.75rem;
+      #{$fi}__title {
+        flex-basis: 100%;
+        margin-bottom: 3.6rem;
+        padding-left: 1.75rem;
+        font-size: 3.2rem;
+        font-weight: bold;
+      }
+      #{$fo}-row {
+        flex: 1 1 50%;
+        height: 7.8rem;
+        margin-bottom: 2.5rem;
+        padding: 3.2rem 1.75rem 0;
+        .form-text__label {
+          position: absolute;
+          top: 0;
+          font-size: 1.8rem;
+        }
+      }
+    }
+    &[data-fieldset="필수동의항목"] {
+      #{$fo}-row {
+        &[data-row="동의"] {
+          .form-check__input {
+            margin-right: 1rem;
+            border-radius: 100%;
+            background-size: 50%;
+          }
+          .form-check__label {
+            strong {
+              text-decoration: underline;
+            }
+          }
+        }
       }
     }
   }

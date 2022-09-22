@@ -25,15 +25,14 @@
 
 /* input 기본값 */
 .form-text {
-  $f: &;
-
   font-size: $G-font-size;
+  &__textarea,
   &__input {
     display: block;
     width: 100%;
     height: 100%;
-    padding: 0 fz-in-em(30, $G-font-size);
-    border: 1px solid #666;
+    padding: fz-in-em(14, $G-font-size);
+    border: 0.1rem solid #ced4da;
     border-radius: fz-in-em(8, $G-font-size);
     background-color: #fff;
     font-weight: 400;
@@ -42,7 +41,7 @@
     @include transition;
 
     &:focus {
-      border: 2px solid #333;
+      border-color: #333;
       outline: 0;
     }
   }

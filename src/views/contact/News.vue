@@ -49,7 +49,7 @@ export default {
      */
     getData(_callback) {
       axios
-        .all([axios.get(`${SERVER.api}/esgSystem/contact/news/getMainNewsInfo`)])
+        .all([axios.post(`${SERVER.api}/esgSystem/contact/news/getMainNewsInfo?pageNum=0`)])
         .then(
           axios.spread((..._response) => {
             console.log(_response[0]);

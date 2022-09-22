@@ -229,14 +229,23 @@ export default {
       padding: 0 2.8rem;
       font-size: 2.6rem;
       color: $color;
-      border: 0.2rem solid $color;
       border-radius: 2em;
       font-weight: bold;
       color: $color;
       background-color: #fff;
       opacity: 1;
       @include transition;
-
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 0;
+        border: 0.3rem solid $G-color-primary;
+        border-radius: 2em;
+      }
       &::after {
         content: "";
         position: absolute;
@@ -245,19 +254,19 @@ export default {
         left: -10px;
         right: 100%;
         z-index: -1;
-
         @include transition;
       }
       &:hover,
       &-active {
         color: #fff;
         box-shadow: 0 0.3rem 1.7rem rgba(46, 43, 176, 0.4);
+        &::before {
+          border-color: transparent;
+          @include transition($time: 0.25);
+        }
         &::after {
           right: -10px;
           background: $color;
-        }
-        &::before {
-          @include transition($time: 0.25);
         }
       }
       &[data-category="All"] {
