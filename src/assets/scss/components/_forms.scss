@@ -59,20 +59,17 @@
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 0 fz-in-em(80, $G-font-size) 0 fz-in-em(30, $G-font-size);
-    border: 1px solid #666;
+    padding: 0 fz-in-em(14, $G-font-size);
+    border: 0.1rem solid #ced4da;
     border-radius: fz-in-em(8, $G-font-size);
     font-weight: 400;
     line-height: 1.5;
     color: #333;
     background-color: #fff;
     background-image: svgIcon(triangle-down, 333);
-    background-position: right fz-in-em(30, $G-font-size) center;
+    background-position: right fz-in-em(15, $G-font-size) center;
     background-repeat: no-repeat;
-    background-size: fz-in-em(14, $G-font-size);
-    &:focus {
-      background-image: svgIcon(triangle-up, 333);
-    }
+    background-size: fz-in-em(10, $G-font-size);
   }
 }
 

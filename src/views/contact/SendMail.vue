@@ -26,9 +26,12 @@
             <label for="position" class="form-text__label"><span class="txt">이메일 주소</span></label>
             <input id="position" class="form-text__input" type="text" placeholder="예) pesg123@prone.com" />
           </div>
-          <div class="form-row form-text" data-row="산업군">
+          <div class="form-row form-select" data-row="산업군">
             <label for="job" class="form-text__label"><span class="txt">산업군</span></label>
-            <input id="job" class="form-text__input" type="text" placeholder="산업군 선택" />
+            <select class="form-select__select">
+              <option>전체</option>
+              <option v-for="code in this.codes" :value="code.code">{{ code.code_name }}</option>
+            </select>
           </div>
           <div class="form-row form-text" data-row="문의사항" style="height: 20rem">
             <label for="textarea" class="form-text__label"><span class="txt">문의사항</span></label>
@@ -60,7 +63,7 @@ export default {
   name: "send-mail",
   data() {
     return {
-      datas: null,
+      codes: null,
     };
   },
   created() {
@@ -72,26 +75,12 @@ export default {
      * API request
      *
      */
-    getData(_callback) {
+    getData() {
       axios
-        .all([
-          axios.post(`${SERVER.api}/esgSystem/contact/inquiry/send-mail`, {
-            i_name: "a",
-            i_phone_nm: "b",
-            i_group_name: "c",
-            i_position: "d",
-            i_email: "e",
-            i_industry_name: "f",
-            i_content: "g",
-          }),
-        ])
-        .then(
-          axios.spread((..._response) => {
-            console.log(response);
-
-            if (_callback) _callback();
-          })
-        )
+        .get(`${SERVER.api}/esgSystem/contact/inquiry/getIndustryCode`)
+        .then((_response) => {
+          this.codes = _response.data.industryCode;
+        })
         .catch((_error) => {
           console.log(_error);
         });
