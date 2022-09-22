@@ -49,10 +49,16 @@ export default {
      */
     getData(_callback) {
       axios
-        .all([axios.post(`${SERVER.api}/esgSystem/contact/news/getMainNewsInfo?pageNum=0`)])
+        .all([
+          axios.post(`${SERVER.api}/esgSystem/contact/news/getMainNewsInfo`, {
+            pageNum: 0,
+          }),
+        ])
         .then(
           axios.spread((..._response) => {
             this.option.totalDatas = _response[0].data.newsInfo;
+
+            console.log(this.option.totalDatas);
 
             if (_callback) _callback();
           })

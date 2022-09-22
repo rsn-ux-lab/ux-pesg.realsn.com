@@ -64,6 +64,8 @@ export default {
         ])
         .then(
           axios.spread((..._response) => {
+            console.log(_response[0].data.insightInfo[0].ib_title);
+
             this.datas = _response.map((_list) => {
               return _list.data.insightInfo.filter((_item) => (_item.imgUrl = SERVER.api + _item.imgUrl));
             });

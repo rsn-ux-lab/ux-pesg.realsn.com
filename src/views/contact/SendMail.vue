@@ -69,7 +69,7 @@ export default {
   },
   created() {
     this.getData();
-    this.test();
+    // this.test();
   },
   methods: {
     /**
@@ -100,7 +100,7 @@ export default {
           i_content: "",
         })
         .then((_response) => {
-          console.log("a");
+          //
         })
         .catch((_error) => {
           console.log(_error);
@@ -144,6 +144,12 @@ export default {
           position: absolute;
           top: 0;
           font-size: 1.8rem;
+          &::after {
+            content: "*";
+            display: inline-block;
+            padding-left: 0.3rem;
+            color: #f24e1e;
+          }
         }
       }
     }
