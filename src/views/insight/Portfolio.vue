@@ -10,7 +10,7 @@
       <div class="swiper-pagination"></div>
 
       <!-- swiper -->
-      <div class="swiper">
+      <div class="swiper" data-loding-spinner="true">
         <div class="swiper-wrapper">
           <section class="swiper-slide" v-for="categorys in datas">
             <ul class="portfolio-list" v-if="categorys">
@@ -64,8 +64,6 @@ export default {
         ])
         .then(
           axios.spread((..._response) => {
-            console.log(_response[0].data.insightInfo[0].ib_title);
-
             this.datas = _response.map((_list) => {
               return _list.data.insightInfo.filter((_item) => (_item.imgUrl = SERVER.api + _item.imgUrl));
             });
@@ -75,6 +73,9 @@ export default {
         )
         .catch((_error) => {
           console.log(_error);
+        })
+        .finally(() => {
+          this.$el.querySelector("[data-loding-spinner]").setAttribute("data-loding-spinner", false);
         });
     },
 
@@ -120,6 +121,25 @@ export default {
     $list: &;
 
     padding: 5rem;
+    &:empty {
+      &::after {
+        content: "데이터가 없습니다.";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        height: 27rem;
+        margin-bottom: 3rem;
+        padding: 0 3rem;
+        border-radius: $G-box-radius;
+        font-size: 3rem;
+        color: #ccc;
+        font-weight: bold;
+        background-color: #fff;
+        box-shadow: 0 0.2rem 1em rgba(7, 7, 7, 0.08);
+      }
+    }
+
     &__item {
       display: flex;
       align-items: center;
@@ -195,16 +215,18 @@ export default {
   &-wrapper {
     &:empty {
       &::after {
-        content: "데이터가 없습니다.";
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: inherit;
-        height: 30rem;
-        font-size: 3rem;
-        font-weight: bold;
-        color: #ccc;
-        text-align: center;
+        [data-loding-spinner="false"] & {
+          content: "데이터가 없습니다.";
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: inherit;
+          height: 30rem;
+          font-size: 3rem;
+          font-weight: bold;
+          color: #ccc;
+          text-align: center;
+        }
       }
     }
   }
@@ -278,17 +300,6 @@ export default {
   }
   &-slide {
     opacity: 0;
-    &-active:empty {
-      &::after {
-        content: "데이터가 없습니다.";
-        display: block;
-        padding: 20rem 0 15rem;
-        text-align: center;
-        font-size: 4rem;
-        font-weight: bold;
-        color: #ccc;
-      }
-    }
   }
 }
 </style>

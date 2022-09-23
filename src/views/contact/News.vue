@@ -2,14 +2,16 @@
   <section class="news l-section">
     <div class="inner">
       <h3 class="l-section__title">주요 소식</h3>
-      <ul class="news-list">
-        <li class="news-list__item" v-for="item in this.option.currentDatas">
-          <a class="news-list__link" :href="`${item.mn_url}`" target="_blank">
-            <span class="txt clamp-1">{{ item.mn_title }}</span>
-            <span class="date">{{ item.post_date }}</span>
-          </a>
-        </li>
-      </ul>
+      <div data-loding-spinner="true">
+        <ul class="news-list">
+          <li class="news-list__item" v-for="item in this.option.currentDatas">
+            <a class="news-list__link" :href="`${item.mn_url}`" target="_blank">
+              <span class="txt clamp-1">{{ item.mn_title }}</span>
+              <span class="date">{{ item.post_date }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -32,14 +34,9 @@ export default {
     };
   },
   created() {
-    this.getData(() => {
+    this.getItem(0, () => {
       this.setCurrentPage();
     });
-  },
-  updated() {
-    // this.getData(() => {
-    //   this.setCurrentPage();
-    // });
   },
   methods: {
     /**
@@ -47,20 +44,19 @@ export default {
      * API request
      *
      */
-    getData(_callback) {
+    getItem(_pageNum, _callback) {
       axios
-        .all([axios.post(`${SERVER.api}/esgSystem/contact/news/getMainNewsInfo?pageNum=0`)])
-        // .all([axios.post(`../json/news.json`)])
-        .then(
-          axios.spread((..._response) => {
-            // this.option.totalDatas = _response[0].data.newsInfo;
-            console.log(_response);
+        .post(SERVER.api + "/esgSystem/contact/news/getMainNewsInfo?pageNum=" + _pageNum)
+        .then((_response) => {
+          this.option.totalDatas = _response.data.newsInfo;
 
-            if (_callback) _callback();
-          })
-        )
+          if (_callback) _callback();
+        })
         .catch((_error) => {
           console.log(_error);
+        })
+        .finally(() => {
+          this.$el.querySelector("[data-loding-spinner]").setAttribute("data-loding-spinner", false);
         });
     },
     setCurrentPage() {
@@ -82,18 +78,20 @@ export default {
   &-list {
     &:empty {
       &::after {
-        content: "데이터가 없습니다.";
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 10rem;
-        padding: 0 3.5rem;
-        font-size: 2.3rem;
-        font-weight: bold;
-        color: #ccc;
-        border-radius: $G-box-radius;
-        background-color: #fff;
-        box-shadow: 0 0 0.8rem rgba(7, 7, 7, 0.08);
+        [data-loding-spinner="false"] & {
+          content: "데이터가 없습니다.";
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 10rem;
+          padding: 0 3.5rem;
+          font-size: 2.3rem;
+          font-weight: bold;
+          color: #ccc;
+          border-radius: $G-box-radius;
+          background-color: #fff;
+          box-shadow: 0 0 0.8rem rgba(7, 7, 7, 0.08);
+        }
       }
     }
     &__item {

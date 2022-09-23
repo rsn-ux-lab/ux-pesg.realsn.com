@@ -2,18 +2,20 @@
   <section class="faq l-section">
     <div class="inner">
       <h3 class="l-section__title">자주 묻는 질문</h3>
-      <ul class="faq-list">
-        <li class="faq-list__item" v-for="item in datas">
-          <section class="faq-list-wrapper">
-            <header class="faq-list-header">
-              <button class="btn btn-tit clamp-1" type="button">{{ item.if_title }}</button>
-            </header>
-            <main class="faq-list-body">
-              <div class="faq-list-body__textarea">{{ item.if_content }}</div>
-            </main>
-          </section>
-        </li>
-      </ul>
+      <div data-loding-spinner="true">
+        <ul class="faq-list">
+          <li class="faq-list__item" v-for="item in datas">
+            <section class="faq-list-wrapper">
+              <header class="faq-list-header">
+                <button class="btn btn-tit clamp-1" type="button">{{ item.if_title }}</button>
+              </header>
+              <main class="faq-list-body">
+                <div class="faq-list-body__textarea">{{ item.if_content }}</div>
+              </main>
+            </section>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -52,6 +54,9 @@ export default {
         )
         .catch((_error) => {
           console.log(_error);
+        })
+        .finally(() => {
+          this.$el.querySelector("[data-loding-spinner]").setAttribute("data-loding-spinner", false);
         });
     },
 
