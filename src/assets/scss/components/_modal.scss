@@ -48,6 +48,7 @@
     overflow: auto;
   }
   &-footer {
+    position: relative;
   }
   &-dimmed {
     position: absolute;
@@ -60,6 +61,14 @@
     background-color: rgba(0, 0, 0, 0.7);
     touch-action: none;
   }
+}
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
+
+/* 경고창 */
+.modal.modal-alert {
 }
 
 /*

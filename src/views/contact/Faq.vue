@@ -37,11 +37,7 @@ export default {
     this.setAccordion();
   },
   methods: {
-    /**
-     *
-     * API request
-     *
-     */
+    /* API */
     getData(_callback) {
       axios
         .all([axios.get(`${SERVER.api}/esgSystem/contact/faq/getFaqInfo`)])
@@ -60,11 +56,7 @@ export default {
         });
     },
 
-    /**
-     *
-     * 아코디언 메뉴 활성화
-     *
-     */
+    /* 아코디언 메뉴 활성화 */
     setAccordion() {
       const $item = this.$el.querySelectorAll(".faq-list__item");
 

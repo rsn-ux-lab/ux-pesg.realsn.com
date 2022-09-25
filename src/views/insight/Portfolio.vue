@@ -51,7 +51,7 @@ export default {
   methods: {
     /**
      *
-     * API request
+     * API
      *
      */
     getData(_callback) {

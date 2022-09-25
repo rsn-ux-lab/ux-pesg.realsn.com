@@ -1,5 +1,5 @@
 <template>
-  <div id="wrap" data-target-device="pc">
+  <div id="wrap" data-target-device="pc" data-loding-spinner="false dimmed fixed">
     <Header></Header>
     <transition name="container">
       <router-view />
@@ -78,18 +78,7 @@ export default {
           $.moveToParams();
         }, 1000);
       }
-      /*
-      ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-      */
-      {
-        /**
-         *
-         * 더블탭(확대기능) 방지
-         *
-         */
 
-        $.disabledDoubleTab();
-      }
       /*
       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
       */
@@ -220,7 +209,6 @@ export default {
          * <div data-loding-spinner="true 1rem"></div> // rem 단위로 숫자 삽입하는 경우 크기 변경됨(기본값 : 6rem)
          *
          */
-
         $("[data-loding-spinner]").lodingSpinner();
       }
       /*

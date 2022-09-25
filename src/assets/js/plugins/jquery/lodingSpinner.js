@@ -20,14 +20,15 @@ $.fn.lodingSpinner = function () {
     let isSize = $this.attr("data-loding-spinner").match(/[\w\-\.]+\w+em/g);
     let isActive = $this.attr("data-loding-spinner").includes("true");
     let isDimmed = $this.attr("data-loding-spinner").includes("dimmed");
+    let isfixed = $this.attr("data-loding-spinner").includes("fixed");
     const $spinner = $(
       `<svg class="loding__spinner" viewBox="0 0 50 50"> <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle> </svg>`
     );
     const $loding = $(`<div class="loding"><span class="visually-hidden">데이터를 불러오고 있습니다.</span></div>`);
 
     $loding.css({
-      position: "absolute",
-      zIndex: 2,
+      position: isfixed ? "fixed" : "absolute",
+      zIndex: 100,
       top: 0,
       bottom: 0,
       left: 0,
@@ -80,17 +81,20 @@ $.fn.lodingSpinner = function () {
     let changedSpinner;
     (changedSpinner = function () {
       if (isActive) {
-        activeSpinner();
+        if ($this.find("> .loding").length < 1) activeSpinner();
       } else {
         removeSpinner();
       }
     })();
 
-    $this.attrchange({
+    let isbeforeActive;
+    $this.off().attrchange({
       callback: function () {
         isActive = $this.attr("data-loding-spinner").includes("true");
 
-        changedSpinner();
+        if (isbeforeActive !== isActive) {
+          changedSpinner();
+        }
       },
     });
 
@@ -98,7 +102,7 @@ $.fn.lodingSpinner = function () {
       $this
         .css({
           overflow: "hidden",
-          position: "relative",
+          position: $this.css("position") === "static" && "relative",
         })
         .prepend($loding);
     }
@@ -106,7 +110,7 @@ $.fn.lodingSpinner = function () {
     function removeSpinner() {
       $this.css({
         overflow: "",
-        position: "",
+        position: $this.css("position") === "static" && "",
       });
       $loding.remove();
     }

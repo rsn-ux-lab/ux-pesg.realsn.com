@@ -3,25 +3,25 @@
     <div class="inner">
       <h3 class="l-section__title">주요 소식</h3>
       <div data-loding-spinner="true">
-        <ul class="news-list">
-          <li class="news-list__item" v-for="item in this.currentDatas">
+        <ul class="news-list" :data-list-index="listCurrentNum">
+          <li class="news-list__item" v-for="item in this.listDatas">
             <a class="news-list__link" :href="`${item.mn_url}`" target="_blank">
               <span class="txt clamp-1">{{ item.mn_title }}</span>
               <span class="date">{{ item.post_date }}</span>
             </a>
           </li>
         </ul>
-        <ol class="news-pagination" :data-page-current="pageCurrentNum">
+        <ol class="news-pagination" :data-pagination-index="pagingCurrentNum">
           <li class="news-pagination__item news-pagination__item--prev" :class="{ 'is-disable': !isPagePrev }">
-            <button class="news-pagination__btn" @click="getCurrentData(--pageCurrentNum * pageCount - (pageCount - 1))" type="button">이전</button>
+            <button class="news-pagination__btn" @click="getCurrentData(--pagingCurrentNum * pagingCount - (pagingCount - 1))" type="button">이전</button>
           </li>
-          <li class="news-pagination__item" v-for="num in currentPages" :ref="setItemRef">
+          <li class="news-pagination__item" v-for="num in currentPages" :ref="setListItemRef">
             <button class="news-pagination__btn" @click="getCurrentData(num)">
               {{ num }}
             </button>
           </li>
           <li class="news-pagination__item news-pagination__item--next" :class="{ 'is-disable': !isPageNext }">
-            <button class="news-pagination__btn" @click="getCurrentData(pageCurrentNum++ * pageCount + 1)" type="button">다음</button>
+            <button class="news-pagination__btn" @click="getCurrentData(pagingCurrentNum++ * pagingCount + 1)" type="button">다음</button>
           </li>
         </ol>
       </div>
@@ -36,49 +36,49 @@ export default {
   name: "news",
   data() {
     return {
-      itemRefs: [],
-      currentDatas: null,
-      itemCount: 4, //한 페이지에 나타낼 글 수
-      itemCurrentNum: null, // 현재 보여지는 페이지 번호
-      pageTotals: null,
-      pageCount: 4, //페이징에 나타낼 button 수
-      pageCurrentNum: 1, //현재 페이징 리스트 번호
+      listDatas: null,
+      listItemRefs: [],
+      listCount: 4, //한 페이지에 나타낼 글 수
+      listCurrentNum: null, // 현재 보여지는 페이지 번호
+      pagingTotals: null,
+      pagingCount: 4, //페이징에 나타낼 button 수
+      pagingCurrentNum: 1, //현재 페이징 리스트 번호
       get isPagePrev() {
-        return this.pageTotals === null ? false : this.pageCurrentNum > 1;
+        return this.pagingTotals === null ? false : this.pagingCurrentNum > 1;
       },
       get isPageNext() {
-        return this.pageTotals === null ? false : this.pageCurrentNum < this.pageTotals.length;
+        return this.pagingTotals === null ? false : this.pagingCurrentNum < this.pagingTotals.length;
       },
       get currentPages() {
-        return this.pageTotals === null ? null : this.pageTotals[this.pageCurrentNum - 1];
+        return this.pagingTotals === null ? null : this.pagingTotals[this.pagingCurrentNum - 1];
       },
     };
   },
   created() {
     this.getPageTotal();
-    this.getCurrentData(this.pageCurrentNum);
+    this.getCurrentData(this.pagingCurrentNum);
   },
   methods: {
-    /* API request - 전체글 개수  */
+    /* API - 전체글 개수  */
     getPageTotal() {
       axios
         .get(`${SERVER.api}/esgSystem/contact/news/getMainNewsInfoTotalCnt`)
         .then((_response) => {
           const totalCount = _response.data.newsInfoTotalCnt;
 
-          this.pageTotals = Array.from({ length: totalCount / this.itemCount }, (v, i) => i + 1).division(this.pageCount);
+          this.pagingTotals = Array.from({ length: totalCount / this.listCount }, (v, i) => i + 1).division(this.pagingCount);
         })
         .catch((_error) => {
           console.log(_error);
         });
     },
-    /* API request - 글목록  */
+    /* API - 글목록  */
     getCurrentData(_pageNum) {
       axios
         .post(`${SERVER.api}/esgSystem/contact/news/getMainNewsInfo?pageNum=${_pageNum - 1}`)
         .then((_response) => {
-          this.currentDatas = _response.data.newsInfo;
-          this.itemCurrentNum = _pageNum;
+          this.listDatas = _response.data.newsInfo;
+          this.listCurrentNum = _pageNum;
         })
         .catch((_error) => {
           console.log(_error);
@@ -87,20 +87,20 @@ export default {
           this.$el.querySelector("[data-loding-spinner]").setAttribute("data-loding-spinner", false);
         });
     },
-    setItemRef(el) {
-      this.itemRefs.push(el);
+    setListItemRef(el) {
+      this.listItemRefs.push(el);
     },
   },
   updated() {
     /* pagination - active toggle */
-    const $lis = this.itemRefs;
+    const $lis = this.listItemRefs;
 
     $lis.forEach((_$li) => {
       if (Boolean(_$li) === false) return;
 
       const $btn = _$li.querySelector("button");
       const btnNum = Number($btn.innerHTML);
-      const itemNum = this.itemCurrentNum;
+      const itemNum = this.listCurrentNum;
 
       if (btnNum === itemNum) {
         _$li.classList.add("is-active");
