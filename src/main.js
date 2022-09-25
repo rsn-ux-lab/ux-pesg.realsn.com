@@ -1,6 +1,6 @@
-/* fonts */
+/* SCSS */
 import "./assets/fonts/NotoSansKR/NotoSansKR.css"; // NotoSansKR
-import "./assets/fonts/Jost/Jost.css"; // NotoSansKR
+import "./assets/fonts/Jost/Jost.css"; // Jost
 import "./assets/scss/import.scss";
 
 /* Lib */
