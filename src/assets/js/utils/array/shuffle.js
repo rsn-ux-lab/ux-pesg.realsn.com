@@ -20,9 +20,9 @@ Array.prototype.division = function (_slice) {
   const beforeArr = this;
   const length = beforeArr.length;
   const divide = Math.floor(length / _slice) + (Math.floor(length % _slice) > 0 ? 1 : 0);
-  const newArray = [];
+  const newArray = new Array();
 
-  for (let i = 0; i <= divide; i++) {
+  for (let i = 0; i < divide; i++) {
     // 배열 0부터 n개씩 잘라 새 배열에 넣기
     newArray.push(beforeArr.splice(0, _slice));
   }
