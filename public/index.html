@@ -3,10 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />    
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <!-- <script src="//www.gstatic.com/charts/loader.js"></script> -->
+
+    <!-- SEO -->
+    <meta name="title" content="P.ESG 회사소개">
+    <meta name="description" content="P.ESG로 우리 기업의 ESG 가치를 바로 확인하세요">
+    <meta name="keywords" content="P.ESG, 회사소개, ESG, 기초분석, 순위분석, 심화분석">
+    <meta property="og:type" content="website"> <!-- 페이지 타입 -->
+    <meta property="og:title" content="P.ESG 회사소개">
+    <meta property="og:description" content="P.ESG로 우리 기업의 ESG 가치를 바로 확인하세요"">
+    <meta property="og:image" content="<%= BASE_URL %>/img/myimage.jpg"> <!-- 콘텐츠를 공유 시 표시되는 이미지의 URL 800x400 -->
+    <meta property="og:url" content="<%= BASE_URL %>"> <!-- 페이지의 표준 URL (데스크탑 URL) -->
+
+    <!-- FAVICON -->
+    <link rel="icon" href="<%= BASE_URL %>/img/favicon/favicon-16.png" sizes="16x16">
+    <link rel="icon" href="<%= BASE_URL %>/img/favicon/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="<%= BASE_URL %>/img/favicon/favicon-48.png" sizes="48x48">
+    <link rel="icon" href="<%= BASE_URL %>/img/favicon/favicon-64.png" sizes="64x64">
+    <link rel="icon" href="<%= BASE_URL %>/img/favicon/favicon-128.png" sizes="128x128">
   </head>
   <body>
     <noscript>
